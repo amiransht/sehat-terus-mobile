@@ -1,4 +1,4 @@
-# Tugas Proyek Tengah Semester
+# Tugas Proyek Akhir Semester
 ## Sehat Terus Mobile Application
 
 Kelompok F03:
@@ -19,21 +19,21 @@ Dengan mengunjungi laman utama website SehatTerus, para pengguna aplikasi awalny
 ## Daftar Modul
 1. Autentikasi - Refiany
 2. Profil - Refiany 
-Menampilkan informasi tentang User yang sedang login
+    Menampilkan informasi tentang User yang sedang login
 3. Settings - Refiany 
-Memungkinkan user untuk melakukan perubahan terhadap profil mereka.
+    Memungkinkan user untuk melakukan perubahan terhadap profil mereka.
 4. Homepage - Amira 
-Menampilkan banner, infografis, rangkuman statistik data jumlah pasien Covid, dan berita-berita seputar Covid-19
+    Menampilkan banner, infografis, rangkuman statistik data jumlah pasien Covid, dan berita-berita seputar Covid-19
 5. Create Data Pasien & Lurah Page - Dimitri
-Menambahkan data identitas pasien covid dan menampilkannya dalam bentuk card
+    Menambahkan data identitas pasien covid dan menampilkannya dalam bentuk card
 6. Nakes Page - Raihan 
-Menampilkan data pasien covid yang membutuhkan
+    Menampilkan data pasien covid yang membutuhkan
 7. Tentang Website - Amira 
-Menampilkan beberapa informasi mengenai website kepada seluruh user
+    Menampilkan beberapa informasi mengenai website kepada seluruh user
 8. FAQ - Shannon 
-Menampilkan pertanyaan dan jawaban terkait website
+    Menampilkan pertanyaan dan jawaban terkait website
 9. Blog - Shannon 
-Menampilkan blog yang dibuat Nakes terkait informasi kesehatan
+    Menampilkan blog yang dibuat Nakes terkait informasi kesehatan
 10. Base, Navbar - Amira
 
 ## Role
