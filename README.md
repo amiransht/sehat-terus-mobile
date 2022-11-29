@@ -17,23 +17,23 @@ SehatTerus merupakan aplikasi yang dikembangkan untuk membantu warga dalam menge
 Dengan mengunjungi laman utama aplikasi SehatTerus, para pengguna aplikasi akan melihat rangkuman dan statistik data yang dimasukkan pada aplikasi tersebut dan data statistik real-time perkembangan COVID-19 di Indonesia. Selain itu, pada halaman tersebut terdapat card yang berisi link menuju berita-berita terkini mengenai COVID-19 di seluruh dunia.
 
 ## Daftar Modul
-- Refiany
+Refiany: 
 1. Autentikasi 
 2. Profil - Menampilkan informasi tentang User yang sedang login
 3. Settings & Dashboard Profile - Memungkinkan user untuk melakukan perubahan terhadap profil mereka.
 
-- Amira
+Amira:
 1. Homepage - Menampilkan banner, infografis, rangkuman statistik data jumlah pasien Covid di Indonesia & Kelurahan Sehat Terus, dan berita-berita seputar Covid-19
 2. Tentang Website - Menampilkan beberapa informasi mengenai website kepada seluruh user
 3. Base, Navbar
 
-- Dimitri
-1. Create Data Pasien & Lurah Page - Menambahkan data identitas pasien covid dan menampilkannya dalam bentuk card
+Dimitri:
+Create Data Pasien & Lurah Page - Menambahkan data identitas pasien covid dan menampilkannya dalam bentuk card
 
-- Raihan
-1. Nakes Page - Menampilkan data pasien covid di kelurahan Sehat terus dan Mengupdate status kesehatan pasien
+Raihan:
+Nakes Page - Menampilkan data pasien covid di kelurahan Sehat terus dan Mengupdate status kesehatan pasien
 
-- Shannon
+Shannon:
 1. FAQ - Menampilkan pertanyaan dan jawaban terkait COVID 19
 2. Blog - Menampilkan blog yang dibuat Nakes terkait informasi kesehatan
 
