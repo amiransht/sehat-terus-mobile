@@ -14,7 +14,7 @@ Raihan Kus Putranto - 2106703821
 
 SehatTerus merupakan aplikasi yang dikembangkan untuk membantu warga dalam mengetahui perkembangan penyebaran virus COVID-19. Selain itu, aplikasi ini juga ditujukan untuk memungkinkan para tenaga kesehatan melakukan tracking secara digital terhadap pasien COVID-19 yang masih membutuhkan bantuan.
 
-Dengan mengunjungi laman utama website SehatTerus, para pengguna aplikasi awalnya akan ditujukan di halaman pertama yang berisikan rangkuman dan statistik data yang dimasukkan pada aplikasi tersebut dan data statistik perkembangan COVID-19 di INDONESIA APA JAKARTA. Selain itu, pada halaman tersebut terdapat card yang berisi link menuju berita-berita terkini mengenai COVID-19 di seluruh dunia.
+Dengan mengunjungi laman utama aplikasi SehatTerus, para pengguna aplikasi akan melihat rangkuman dan statistik data yang dimasukkan pada aplikasi tersebut dan data statistik real-time perkembangan COVID-19 di Indonesia. Selain itu, pada halaman tersebut terdapat card yang berisi link menuju berita-berita terkini mengenai COVID-19 di seluruh dunia.
 
 ## Daftar Modul
 - Refiany
@@ -23,7 +23,7 @@ Dengan mengunjungi laman utama website SehatTerus, para pengguna aplikasi awalny
 3. Settings & Dashboard Profile - Memungkinkan user untuk melakukan perubahan terhadap profil mereka.
 
 - Amira
-1. Homepage - Menampilkan banner, infografis, rangkuman statistik data jumlah pasien Covid, dan berita-berita seputar Covid-19
+1. Homepage - Menampilkan banner, infografis, rangkuman statistik data jumlah pasien Covid di Indonesia & Kelurahan Sehat Terus, dan berita-berita seputar Covid-19
 2. Tentang Website - Menampilkan beberapa informasi mengenai website kepada seluruh user
 3. Base, Navbar
 
@@ -31,10 +31,10 @@ Dengan mengunjungi laman utama website SehatTerus, para pengguna aplikasi awalny
 1. Create Data Pasien & Lurah Page - Menambahkan data identitas pasien covid dan menampilkannya dalam bentuk card
 
 - Raihan
-1. Nakes Page - Menampilkan data pasien covid yang membutuhkan
+1. Nakes Page - Menampilkan data pasien covid di kelurahan Sehat terus dan Mengupdate status kesehatan pasien
 
 - Shannon
-1. FAQ - Menampilkan pertanyaan dan jawaban terkait website
+1. FAQ - Menampilkan pertanyaan dan jawaban terkait COVID 19
 2. Blog - Menampilkan blog yang dibuat Nakes terkait informasi kesehatan
 
 
