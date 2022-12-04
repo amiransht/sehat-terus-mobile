@@ -38,6 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.1.1
   carousel_indicator: ^1.0.6
+  flutter_svg: ^1.1.6
+  flutter_staggered_grid_view: ^0.6.2
+  getwidget: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +70,12 @@ flutter:
     - assets/banner3.png
     - assets/banner4.png
     - assets/5m-1.png
+    - assets/5m-2.png
+    - assets/5m-3.png
+    - assets/5m-7.png
+    - assets/5m-5.png
+    - assets/5m-6.png
+    - assets/svg/onboarding.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
