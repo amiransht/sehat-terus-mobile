@@ -14,7 +14,7 @@ class App extends StatelessWidget {
     return const MaterialApp(
       title: 'Task Management',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.onBoarding,
+      initialRoute: Routes.home,
       onGenerateRoute: RouterGenerator.generateRoutes,
     );
   }
