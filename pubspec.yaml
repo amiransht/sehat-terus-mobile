@@ -76,6 +76,9 @@ flutter:
     - assets/5m-7.png
     - assets/5m-5.png
     - assets/5m-6.png
+    - assets/news1.png
+    - assets/news2.jpeg
+    - assets/news3.jpeg
     - assets/svg/onboarding.svg
 
   # To add assets to your application, add an assets section, like this:
