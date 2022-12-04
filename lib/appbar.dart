@@ -8,6 +8,10 @@ AppBar buildAppBar(BuildContext context) {
         fit: BoxFit.contain,
         height: 56,
       ),
+      actions: [
+        Icon(Icons.message_outlined)
+      ],
+
       centerTitle: true,
       elevation: 2.2,
       backgroundColor: BaseColors.white,
