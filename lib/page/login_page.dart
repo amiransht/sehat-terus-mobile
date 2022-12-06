@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,10 +15,11 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   String username = '';
   String password1 = '';
-  // bool isPasswordVisible = true;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -47,15 +50,20 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: 'Enter your username',
                           border: OutlineInputBorder(),
                         ),
-                        validator: (value) {
+                        validator: (String? value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your username';
                           }
                           return null;
                         },
-                        onChanged: (value) {
+                        onChanged: (String? value) {
                           setState(() {
-                            username = value;
+                            username = value!;
+                          });
+                        },
+                        onSaved: (String? value) {
+                          setState(() {
+                            username = value!;
                           });
                         },
                       ),
@@ -69,15 +77,20 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: 'Enter your password',
                           border: OutlineInputBorder(),
                         ),
-                        validator: (value) {
+                        validator: (String? value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your password';
                           }
                           return null;
                         },
-                        onChanged: (value) {
+                        onChanged: (String? value) {
                           setState(() {
-                            password1 = value;
+                            password1 = value!;
+                          });
+                        },
+                        onSaved: (String? value) {
+                          setState(() {
+                            password1 = value!;
                           });
                         },
                       ),
@@ -85,13 +98,47 @@ class _LoginPageState extends State<LoginPage> {
                         height: 20.0,
                       ),
                       ElevatedButton(
-                        onPressed: () {
+                        // onPressed: () {
+                        //   if (_formKey.currentState!.validate()) {
+                        //     ScaffoldMessenger.of(context).showSnackBar(
+                        //       const SnackBar(
+                        //         content: Text('Processing Data'),
+                        //       ),
+                        //     );
+                        //   }
+                        // },
+                        onPressed: () async {
+                          FocusScopeNode currentFocus = FocusScope.of(context);
+                          if (!currentFocus.hasPrimaryFocus) {
+                            currentFocus.unfocus();
+                          }
                           if (_formKey.currentState!.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Processing Data'),
-                              ),
-                            );
+                            setState(() {
+                              isLoading = true;
+                            });
+                            final response = await request.login(
+                                "https://sehat-terus.up.railway.app/authentication/login_flutter/",
+                                {
+                                  "username": username,
+                                  "password": password1,
+                                });
+                            setState(() {
+                              isLoading = false;
+                            });
+                            if (request.loggedIn) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Login Success'),
+                                ),
+                              );
+                              Navigator.pushNamed(context, '/home');
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Login Failed'),
+                                ),
+                              );
+                            }
                           }
                         },
                         child: const Text('LOGIN'),

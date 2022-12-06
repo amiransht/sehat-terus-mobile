@@ -27,7 +27,7 @@ class App extends StatelessWidget {
         // theme: ThemeData(
         //   primarySwatch: Colors.blue,
         // ),
-        // debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
           '/': (context) => const OnboardingScreen(),
