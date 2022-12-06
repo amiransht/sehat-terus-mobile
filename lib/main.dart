@@ -24,9 +24,10 @@ class App extends StatelessWidget {
       },
       child: MaterialApp(
         title: 'Sehat Terus',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        // theme: ThemeData(
+        //   primarySwatch: Colors.blue,
+        // ),
+        // debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
           '/': (context) => const OnboardingScreen(),
