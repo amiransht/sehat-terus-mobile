@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/core/routes/routes.dart';
-import 'package:sehat_terus/widget/circle_gradient_icon.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
+
+  static const routeName = '/';
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -46,23 +47,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ],
                 ),
                 Positioned(
-                  bottom: 70,
-                  left: MediaQuery.of(context).size.width * 0.38,
-                  child: InkWell(
-                    onTap: () {
-                      if (_selectedPage < 2) {
-                        _selectedPage++;
-                        pgController.animateToPage(
-                          _selectedPage,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut,
-                        );
-                        setState(() {});
-                      } else {
-                        Navigator.pushReplacementNamed(context, Routes.home);
-                      }
-                    },
-                    child: Container(
+                    bottom: 70,
+                    left: MediaQuery.of(context).size.width * 0.38,
+                    child: InkWell(
+                      onTap: () {
+                        if (_selectedPage < 2) {
+                          _selectedPage++;
+                          pgController.animateToPage(
+                            _selectedPage,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                          setState(() {});
+                        } else {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        }
+                      },
+                      child: Container(
                         width: 70,
                         height: 70,
                         decoration: BoxDecoration(
@@ -81,8 +82,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           size: 32,
                         ),
                       ),
-                  )
-                )
+                    ))
               ],
             ),
           ),
@@ -150,7 +150,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, Routes.home);
+                    Navigator.pushReplacementNamed(context, '/home');
+                    print(ModalRoute.of(context)?.settings.name);
                   },
                   child: const Text(
                     "Skip",

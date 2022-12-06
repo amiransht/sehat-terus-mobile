@@ -48,37 +48,37 @@ class Article extends Equatable {
     const Article(
       id: '3',
       title:
-          'Aliquam ullamcorper ipsum, vel consequat sem finibus a. Donec lobortis',
+          'Kemenkes Ungkap RI Masih Level 1 Transmisi Komunitas COVID-19',
       body:
-          'Nullam sed augue a turpis bibendum cursus. Suspendisse potenti. Praesent mi ligula, mollis quis elit ac, eleifend vestibulum ex. Nullam quis sodales tellus. Integer feugiat dolor et nisi semper luctus. Nulla egestas nec augue facilisis pharetra. Sed ultricies nibh a odio aliquam, eu imperdiet purus aliquam. Donec id ante nec',
-      author: 'Anna G. Wright',
-      source: 'Politics',
+          'Menyusul kenaikan kasus COVID-19 RI imbas subvarian Omicron XBB, Kementerian Kesehatan RI menyebut Indonesia kini masih berada di Level 1 transmisi komunitas. Namun memang ditemukan dalam sepekan terakhir, tren kasus COVID-19 di Indonesia mengalami penurunan, dibarengi penurunan kasus rawat inap di rumah sakit. "Dalam tujuh hari terakhir rata-rata 5.025 dan hari kemarin 1 desember 4.977, terjadi penurunan 21,2 persen." ungkap juru bicara Kemenkes RI dr Mohammad Syahril melalui keterangan resminya, Sabtu (3/12/2022).',
+      author: 'Vidya Pinandhita',
+      source: 'detikHealth',
       views: 1204,
-      image: 'assets/news1.png',
-      createdAt: 'Minggu, 04 Desember 2022',
+      image: 'assets/news4.jpeg',
+      createdAt: '03 Des 2022',
     ),
     const Article(
       id: '4',
-      title: 'Proin mattis nec lorem at rutrum. Curabitur sit augue vel',
+      title: 'Bisa Lolos Pemeriksaan Antigen, Seberapa Bahaya Sih COVID Varian XBB?',
       body:
-          'Nullam sed augue a turpis bibendum cursus. Suspendisse potenti. Praesent mi ligula, mollis quis elit ac, eleifend vestibulum ex. Nullam quis sodales tellus. Integer feugiat dolor et nisi semper luctus. Nulla egestas nec augue facilisis pharetra. Sed ultricies nibh a odio aliquam, eu imperdiet purus aliquam. Donec id ante nec',
-      author: 'Anna G. Wright',
-      source: 'Politics',
+          'COVID-19 varian Omicron XBB diketahui telah masuk ke Indonesia. Varian anyar ini disinyalir menjadi pemicu naiknya kasus COVID-19 di Tanah Air. Berdasarkan keterangan Kementerian Kesehatan RI, Meski gejalanya relatif lebih ringan dibandingkan subvarian Omicron BA.4 dan BA,5, Omicron XBB memiliki kemampuan menular lebih cepat dibandingkan varian-varian Corona lainnya. Varian baru COVID-19 itu juga memiliki kemampuan untuk menghindar dari antibodi yang ada pada tubuh, termasuk antibodi karena vaksin. Di samping itu, Departemen Kesehatan Filipina menyebut Omicron XBB berpotensi tidak terdeteksi dalam pengujian antigen. Sehingga, butuh tes RT-PCR untuk mendeteksi COVID-19 varian baru tersebut.',
+      author: 'Yudistira Perdana Imandiar',
+      source: 'detikHealth',
       views: 1204,
-      image: 'assets/news1.png',
-      createdAt: 'Minggu, 04 Desember 2022',
+      image: 'assets/news5.png',
+      createdAt: '02 Des 2022',
     ),
     const Article(
       id: '5',
       title:
-          'Donec lobortis lectus a iaculis rutrum. Vestibulum libero sit amet',
+          'Aksi Solidaritas di Tokyo Tolak Lockdown China',
       body:
-          'Nullam sed augue a turpis bibendum cursus. Suspendisse potenti. Praesent mi ligula, mollis quis elit ac, eleifend vestibulum ex. Nullam quis sodales tellus. Integer feugiat dolor et nisi semper luctus. Nulla egestas nec augue facilisis pharetra. Sed ultricies nibh a odio aliquam, eu imperdiet purus aliquam. Donec id ante nec',
-      author: 'Anna G. Wright',
-      source: 'Politics',
+          'Sejumlah warga China yang tinggal di Jepang menggelar aksi protes terhadap lockdown China. Mereka membawa kertas kosong dan sejumlah poster lainnya. Sejumlah warga China yang tinggal di Jepang bergabung dengan para demonstran dalam aksi protes solidaritas menentang penguncian COVID-19 China, di Tokyo, Jepang, Rabu (30/11).',
+      author: 'Kim Kyung-Hoon',
+      source: 'detikNews',
       views: 1204,
-      image: 'assets/news1.png',
-      createdAt: 'Minggu, 04 Desember 2022',
+      image: 'assets/news6.jpeg',
+      createdAt: '01 Des 2022',
     ),
   ];
 

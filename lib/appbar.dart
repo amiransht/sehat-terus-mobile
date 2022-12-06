@@ -9,7 +9,8 @@ AppBar buildAppBar(BuildContext context) {
         height: 56,
       ),
       actions: [
-        Icon(Icons.message_outlined)
+        Icon(Icons.message_outlined),
+        SizedBox(width: 15,)
       ],
 
       centerTitle: true,

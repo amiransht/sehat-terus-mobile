@@ -28,7 +28,9 @@ class ImageContainer extends StatelessWidget {
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(15), topLeft: Radius.circular(15),
+        ),
         image:
         DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
       ),
