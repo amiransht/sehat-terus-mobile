@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/core/colors.dart';
-import 'package:sehat_terus/bottomAppBar.dart';
 import 'package:stroke_text/stroke_text.dart';
 
 class AboutPage extends StatefulWidget {

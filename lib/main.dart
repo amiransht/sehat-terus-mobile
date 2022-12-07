@@ -5,6 +5,7 @@ import 'package:sehat_terus/page/about.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
 import 'package:sehat_terus/page/home_page.dart';
 import 'package:sehat_terus/page/login_page.dart';
+import 'package:sehat_terus/page/main_page.dart';
 import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/page/article_page.dart';
 
@@ -31,6 +32,7 @@ class App extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const OnboardingScreen(),
+          '/main': (context) => const MainPage(),
           '/login': (BuildContext context) => const LoginPage(),
           '/home': (context) => HomePage(),
           '/data': (context) => const DataPage(),

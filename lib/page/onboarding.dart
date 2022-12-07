@@ -59,7 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           );
                           setState(() {});
                         } else {
-                          Navigator.pushReplacementNamed(context, '/home');
+                          Navigator.pushReplacementNamed(context, '/main');
                         }
                       },
                       child: Container(
@@ -149,7 +149,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/main');
                     print(ModalRoute.of(context)?.settings.name);
                   },
                   child: const Text(

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 
 import 'package:sehat_terus/appbar.dart';
-import 'package:sehat_terus/bottomAppBar.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/models/article_model.dart';
 import 'package:sehat_terus/page/article_page.dart';
@@ -95,23 +94,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         )),
-        bottomNavigationBar: BottomNavBar(),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: BaseColors.green,
-          onPressed: () {
-            // showDialog(context: context,
-            // builder: (BuildContext context){
-            //   return _alert.Alert();
-            // },);
-          },
-          // onPressed: () => setState(() {
-          //   _count++;
-          //   print('You like Indonesia $_count time(s)');
-
-          // }),
-          child: const Icon(Icons.add),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
   }

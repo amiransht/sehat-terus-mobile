@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sehat_terus/core/colors.dart';
 
 AppBar buildAppBar(BuildContext context) {
-  if (ModalRoute.of(context)!.settings.name == "/home") {
+  if (ModalRoute.of(context)!.settings.name == "/main" || ModalRoute.of(context)!.settings.name == "/home") {
     return AppBar(
         leadingWidth: 250,
         leading: Image.asset(
@@ -31,7 +31,7 @@ AppBar buildAppBar(BuildContext context) {
           splashColor: BaseColors.green.withOpacity(0.3),
           highlightColor: BaseColors.green.withOpacity(0.3),
           icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
+          onPressed: () => Navigator.pushReplacementNamed(context, '/main'),
         ), 
         elevation: 2.2,
         backgroundColor: BaseColors.white,
