@@ -23,7 +23,7 @@ class ArticlePage extends StatelessWidget {
             leading: IconButton(
               hoverColor: BaseColors.white.withOpacity(0.3),
               highlightColor: BaseColors.white.withOpacity(0.3),
-              icon: Icon(Icons.arrow_back, color: Colors.white),
+              icon: Icon(Icons.arrow_back_ios, color: Colors.white),
               onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
             ), 
             // iconTheme: const IconThemeData(color: Colors.black),

@@ -11,8 +11,6 @@ import 'package:sehat_terus/page/data_statistik.dart';
 import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/widget/section5m.dart';
 import 'package:sehat_terus/widget/image_container.dart';
-import 'package:sehat_terus/core/routes/routes.dart';
-
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,7 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     Article article = Article.articles[0];
@@ -30,13 +27,14 @@ class _HomePageState extends State<HomePage> {
         extendBody: true,
         body: SingleChildScrollView(
             child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 20,
             ),
             _buildCarousel(),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             Container(
               margin: const EdgeInsets.symmetric(
@@ -55,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             Container(
               margin: const EdgeInsets.symmetric(
@@ -70,6 +68,25 @@ class _HomePageState extends State<HomePage> {
                     height: 20,
                   ),
                   _BreakingNews(articles: Article.articles),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _BantuanHeader(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  _buildBantuan(),
                 ],
               ),
             ),
@@ -259,6 +276,126 @@ class _HomePageState extends State<HomePage> {
             fontSize: 12,
           ),
         ),
+      ],
+    );
+  }
+
+  Column _BantuanHeader() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Butuh Bantuan?",
+          style: TextStyle(
+            color: Colors.blueGrey[900],
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        // const Text(
+        //   'Lihat berita terbaru seputar Covid-19 dan Vaksinasi disini',
+        //   style: TextStyle(
+        //     color: Colors.grey,
+        //     fontWeight: FontWeight.w400,
+        //     fontSize: 12,
+        //   ),
+        // ),
+      ],
+    );
+  }
+
+  StaggeredGrid _buildBantuan() {
+    return StaggeredGrid.count(
+      crossAxisCount: 6,
+      crossAxisSpacing: 15,
+      children: [
+        StaggeredGridTile.count(
+            crossAxisCellCount: 3,
+            mainAxisCellCount: 0.8,
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+                decoration: BoxDecoration(
+                  color: BaseColors.green.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: BaseColors.grey.withOpacity(0.7),
+                      blurRadius: 3,
+                      spreadRadius: 1,
+                      offset: const Offset(0, 3),
+                    )
+                  ],
+                ),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, '/about');
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(Icons.info_outline),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "Tentang Aplikasi",
+                        style: TextStyle(
+                          color: Colors.black,
+                          letterSpacing: 0.2,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ))),
+        StaggeredGridTile.count(
+            crossAxisCellCount: 3,
+            mainAxisCellCount: 0.8,
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+                decoration: BoxDecoration(
+                  color: BaseColors.green.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: BaseColors.grey.withOpacity(0.7),
+                      blurRadius: 3,
+                      spreadRadius: 1,
+                      offset: const Offset(0, 3),
+                    )
+                  ],
+                ),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, '/faq');
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(Icons.question_answer_outlined),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "FAQ",
+                        style: TextStyle(
+                          color: Colors.black,
+                          letterSpacing: 0.5,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ))),
       ],
     );
   }

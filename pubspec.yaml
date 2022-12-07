@@ -42,6 +42,7 @@ dependencies:
   flutter_staggered_grid_view: ^0.6.2
   getwidget: ^3.0.1
   equatable: ^2.0.5
+  stroke_text: ^0.0.2
 
 dev_dependencies:
   flutter_test:
@@ -82,7 +83,11 @@ flutter:
     - assets/news4.jpeg
     - assets/news5.png
     - assets/news6.jpeg
-    - assets/svg/onboarding.svg
+    - assets/about.png
+    - assets/about-2.png
+    - assets/blue-wave.png
+    - assets/img-faq.png
+    - assets/onboarding.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

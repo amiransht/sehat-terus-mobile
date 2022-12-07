@@ -8,7 +8,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color _iconPressed = BaseColors.black;
+
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
       child: Container(
@@ -21,22 +21,22 @@ class BottomNavBar extends StatelessWidget {
           children: <Widget>[
             Column(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
-                    padding: EdgeInsets.all(0),
-                    iconSize: 30,
-                    icon: Icon(Icons.home, color: (_iconPressed)),
+                    splashRadius: 20.0,
+                    splashColor: BaseColors.green.withOpacity(0.3),
+                    highlightColor: BaseColors.green.withOpacity(0.3),
+                    padding: EdgeInsets.all(0.0),
+                    iconSize: 20,
+                    icon: Icon(Icons.home),
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/home');
                     }),
                 const Text("Home",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12, color: BaseColors.black)),
-                const SizedBox(
-                  height: 5,
-                )
               ],
             ),
             Column(
@@ -45,8 +45,11 @@ class BottomNavBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
+                    splashRadius: 20.0,
+                    splashColor: BaseColors.green.withOpacity(0.3),
+                    highlightColor: BaseColors.green.withOpacity(0.3),
                     padding: EdgeInsets.all(0),
-                    iconSize: 30,
+                    iconSize: 20,
                     icon: const Icon(Icons.bar_chart_outlined),
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/data');
@@ -55,9 +58,6 @@ class BottomNavBar extends StatelessWidget {
                 const Text("Data",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12, color: BaseColors.black)),
-                const SizedBox(
-                  height: 5,
-                )
               ],
             ),
             Column(
@@ -66,19 +66,20 @@ class BottomNavBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
+                    splashRadius: 20.0,
+                    splashColor: BaseColors.green.withOpacity(0.3),
+                    highlightColor: BaseColors.green.withOpacity(0.3),
                     padding: EdgeInsets.all(0),
-                    iconSize: 30,
+                    iconSize: 20,
                     icon: const Icon(Icons.feed_outlined),
                     onPressed: () {
+                      // BaseColors.green;
                       Navigator.pushReplacementNamed(context, '/home');
                       print(ModalRoute.of(context)?.settings.name);
                     }),
                 const Text("Blog",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12, color: BaseColors.black)),
-                const SizedBox(
-                  height: 5,
-                )
               ],
             ),
             Column(
@@ -87,8 +88,11 @@ class BottomNavBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
+                    splashRadius: 20.0,
+                    splashColor: BaseColors.green.withOpacity(0.3),
+                    highlightColor: BaseColors.green.withOpacity(0.3),
                     padding: EdgeInsets.all(0),
-                    iconSize: 30,
+                    iconSize: 20,
                     icon: const Icon(Icons.person),
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/home');
@@ -97,9 +101,6 @@ class BottomNavBar extends StatelessWidget {
                 const Text("Profil",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12, color: BaseColors.black)),
-                const SizedBox(
-                  height: 5,
-                )
               ],
             ),
           ],
@@ -107,4 +108,8 @@ class BottomNavBar extends StatelessWidget {
       ),
     );
   }
+
+  // IconButton _buildHomeButton(){
+
+  // }
 }
