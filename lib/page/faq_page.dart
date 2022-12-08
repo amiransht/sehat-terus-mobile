@@ -21,7 +21,7 @@ class FaqPage extends StatelessWidget {
             'Tanya Jawab COVID-19',
           ),
         ),
-        body: Column(children:  [
+        body: ListView(children:  [
           Accordion(
             title: 'Mengapa saya masih harus menerapkan protokol kesehatan (3M), padahal saya sudah divaksinasi?',
             content:
