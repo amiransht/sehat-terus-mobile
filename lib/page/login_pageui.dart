@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/src/material/snack_bar.dart';
+import 'package:sehat_terus/config.dart';
 
 class LoginApp extends StatefulWidget {
   const LoginApp({Key? key}) : super(key: key);
@@ -190,7 +191,7 @@ class _LoginAppState extends State<LoginApp> {
                                         isLoading = true;
                                       });
                                       final response = await request.login(
-                                          "https://sehat-terus.up.railway.app/authentication/login_flutter/",
+                                          "${AppConfig.apiUrl}authentication/login_flutter/",
                                           {
                                             "username": username,
                                             "password": password1,
@@ -267,7 +268,7 @@ class _LoginAppState extends State<LoginApp> {
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         launchUrl(Uri.parse(
-                                            "https://sehat-terus.up.railway.app/authentication/register/"));
+                                            "${AppConfig.apiUrl}authentication/register/"));
                                       },
                                   )
                                 ]),
