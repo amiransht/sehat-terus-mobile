@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehat_terus/core/colors.dart';
+import 'package:sehat_terus/constant.dart';
 
 class Section5mContainer extends StatelessWidget {
   final Color color;
@@ -20,14 +21,13 @@ class Section5mContainer extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: BaseColors.white.withOpacity(0.8),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: BaseColors.grey.withOpacity(0.7),
-            blurRadius: 3,
-            spreadRadius: 1,
-            offset: const Offset(0, 3),
-          )
+            offset: const Offset(0, 4),
+            blurRadius: 30,
+            color: kShadowColor,
+          ),
         ],
       ),
       child: Column(

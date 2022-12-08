@@ -51,6 +51,7 @@ dependencies:
   get: ^4.6.5
   google_fonts: ^3.0.1
   font_awesome_flutter: ^10.3.0
+  countup: ^0.1.4
 
 
 dev_dependencies:
@@ -86,6 +87,7 @@ flutter:
     - assets/5m-7.png
     - assets/5m-5.png
     - assets/5m-6.png
+    - assets/map.png
     - assets/news1.png
     - assets/news2.jpeg
     - assets/news3.jpeg
@@ -96,7 +98,9 @@ flutter:
     - assets/about-2.png
     - assets/blue-wave.png
     - assets/img-faq.png
+    - assets/virus.png
     - assets/onboarding.png
+    - assets/icons/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
