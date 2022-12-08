@@ -10,6 +10,7 @@ import 'package:sehat_terus/page/data_statistik.dart';
 import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/widget/section5m.dart';
 import 'package:sehat_terus/widget/image_container.dart';
+import 'package:sehat_terus/constant.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
             _buildCarousel(),
             const SizedBox(
@@ -302,14 +303,13 @@ class _HomePageState extends State<HomePage> {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                 decoration: BoxDecoration(
                   color: BaseColors.green.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: BaseColors.grey.withOpacity(0.7),
-                      blurRadius: 3,
-                      spreadRadius: 1,
-                      offset: const Offset(0, 3),
-                    )
+                      offset: const Offset(0, 4),
+                      blurRadius: 30,
+                      color: kShadowColor,
+                    ),
                   ],
                 ),
                 child: InkWell(
@@ -344,14 +344,13 @@ class _HomePageState extends State<HomePage> {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                 decoration: BoxDecoration(
                   color: BaseColors.green.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: BaseColors.grey.withOpacity(0.7),
-                      blurRadius: 3,
-                      spreadRadius: 1,
-                      offset: const Offset(0, 3),
-                    )
+                      offset: const Offset(0, 4),
+                      blurRadius: 30,
+                      color: kShadowColor,
+                    ),
                   ],
                 ),
                 child: InkWell(
