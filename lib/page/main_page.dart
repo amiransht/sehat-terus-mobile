@@ -3,7 +3,6 @@ import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/home_page.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
-import 'package:sehat_terus/page/login_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -25,10 +24,10 @@ class _MainPageState extends State<MainPage> {
         // style: optionStyle,
       ),
     ),
-
   ];
 
-  final List<BottomNavigationBarItem> _tabsButton = const <BottomNavigationBarItem>[
+  final List<BottomNavigationBarItem> _tabsButton =
+      const <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
       label: 'Home',
@@ -50,41 +49,40 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+        child: Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: Container(
-        height: 69.0,
-        child: BottomNavigationBar(
-          items: _tabsButton,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
-          selectedItemColor: BaseColors.green,
-          selectedFontSize: 12.0,
-          unselectedItemColor: BaseColors.black,
-          showUnselectedLabels: true,
-          onTap: (index) {
+          height: 69.0,
+          child: BottomNavigationBar(
+            items: _tabsButton,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _selectedIndex,
+            selectedItemColor: BaseColors.green,
+            selectedFontSize: 12.0,
+            unselectedItemColor: BaseColors.black,
+            showUnselectedLabels: true,
+            onTap: (index) {
               setState(() {
                 _selectedIndex = index;
               });
             },
-        )
-      ),
+          )),
       floatingActionButton: FloatingActionButton(
-          backgroundColor: BaseColors.green,
-          onPressed: () {
-            // showDialog(context: context,
-            // builder: (BuildContext context){
-            //   return _alert.Alert();
-            // },);
-          },
-          // onPressed: () => setState(() {
-          //   _count++;
-          //   print('You like Indonesia $_count time(s)');
+        backgroundColor: BaseColors.green,
+        onPressed: () {
+          // showDialog(context: context,
+          // builder: (BuildContext context){
+          //   return _alert.Alert();
+          // },);
+        },
+        // onPressed: () => setState(() {
+        //   _count++;
+        //   print('You like Indonesia $_count time(s)');
 
-          // }),
-          child: const Icon(Icons.add),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // }),
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     ));
   }
 }
