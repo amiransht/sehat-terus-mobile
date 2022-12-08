@@ -41,7 +41,7 @@ class _MyHeaderState extends State<MyHeader> {
             ],
           ),
           image: DecorationImage(
-            image: AssetImage("assets/images/virus.png"),
+            image: AssetImage("assets/virus.png"),
           ),
         ),
         child: Column(

@@ -26,7 +26,8 @@ class Article extends Equatable {
       title:
           'DKI Catat 1.056 Kasus, Ini Sebaran 2.548 Kasus Baru COVID-19 RI 4 Desember',
       body:
-          'Indonesia mencatat sebanyak 2.548 kasus baru COVID-19, Minggu (4/12/2022). Kasus aktif kini sebanyak 50.987 kasus. DKI Jakarta kini menyumbang jumlah kasus terbanyak dengan total 1.056. Disusul oleh Jawa Barat dengan total 499 kasus, kemudian Banten dengan total 278 kasus.',
+          'Indonesia mencatat sebanyak 2.548 kasus baru COVID-19, Minggu (4/12/2022). Kasus aktif kini sebanyak 50.987 kasus. DKI Jakarta kini menyumbang jumlah kasus terbanyak dengan total 1.056. Disusul oleh Jawa Barat dengan total 499 kasus, kemudian Banten dengan total 278 kasus.Detail perkembangan virus Corona, Minggu (4/12)\nPasien positif bertambah 2.548 menjadi 6.680.203\nPasien sembuh bertambah 5.772 menjadi 6.469.238\nPasien meninggal bertambah 25 menjadi 159.978',
+          
       author: 'Hana Nushratu',
       source: 'detikHealth',
       views: 1204,

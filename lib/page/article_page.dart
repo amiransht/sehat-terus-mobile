@@ -13,7 +13,7 @@ class ArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final article = ModalRoute.of(context)!.settings.arguments as Article;
-    print(article);
+    
     return ImageContainer(
         width: double.infinity,
         image: article.image,
@@ -104,20 +104,6 @@ class _NewsBody extends StatelessWidget {
                   .bodyMedium!
                   .copyWith(height: 1.5)),
           const SizedBox(height: 50),
-          // GridView.builder(
-          //     shrinkWrap: true,
-          //     itemCount: 2,
-          //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          //       crossAxisCount: 2,
-          //       childAspectRatio: 1.25,
-          //     ),
-          //     itemBuilder: (context, index) {
-          //       return ImageContainer(
-          //         width: MediaQuery.of(context).size.width * 0.42,
-          //         image: article.image,
-          //         margin: const EdgeInsets.only(right: 5.0, bottom: 5.0),
-          //       );
-          //     })
         ],
       ),
     );
@@ -146,9 +132,9 @@ class _NewsHeadline extends StatelessWidget {
           GFButton(
             onPressed: () {},
             text: article.source,
-            textStyle: TextStyle(fontWeight: FontWeight.bold, color: BaseColors.green),
+            textStyle: TextStyle(fontWeight: FontWeight.bold, color: BaseColors.black),
             type: GFButtonType.solid,
-            borderSide: BorderSide(width: 1, color: BaseColors.green),
+            borderSide: BorderSide(width: 1, color: BaseColors.black),
             shape: GFButtonShape.pills,
             color: BaseColors.white.withOpacity(0.7),
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),

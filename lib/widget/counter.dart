@@ -40,12 +40,15 @@ class Counter extends StatelessWidget {
         Countup(
           begin: 0,
           end: number,
-          duration: Duration(seconds: 1),
+          separator: '.',
+          duration: Duration(milliseconds: 800),
           style: TextStyle(
-            fontSize: 36,
+            fontSize: 25,
             color: color,
+            fontWeight: FontWeight.w600
           ),
         ),
+        SizedBox(height: 5),
         Text(title, style: kSubTextStyle),
       ],
     );
