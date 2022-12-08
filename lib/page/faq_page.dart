@@ -1,18 +1,11 @@
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:getwidget/getwidget.dart';
 
-import 'package:sehat_terus/appbar.dart';
-import 'package:sehat_terus/core/colors.dart';
-import 'package:sehat_terus/models/article_model.dart';
-import 'package:sehat_terus/page/article_page.dart';
-import 'package:sehat_terus/page/data_statistik.dart';
-import 'package:sehat_terus/page/onboarding.dart';
-import 'package:sehat_terus/widget/section5m.dart';
-import 'package:sehat_terus/widget/image_container.dart';
-
+import 'package:sehat_terus/page/blog_page.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:sehat_terus/page/accordion.dart';
+import 'package:provider/provider.dart';
+import 'package:sehat_terus/page/formBlog_page.dart';
 
 class FaqPage extends StatelessWidget {
   const FaqPage({Key? key}) : super(key: key);
@@ -20,7 +13,7 @@ class FaqPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    final request = context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -56,7 +49,10 @@ class FaqPage extends StatelessWidget {
             minimumSize: const Size.fromHeight(40),
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push( context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              BlogPage()));
           },
           child: const Text(
             'Lihat Blog',
@@ -71,7 +67,10 @@ class FaqPage extends StatelessWidget {
             minimumSize: const Size.fromHeight(40),
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              BlogFormPage()));
           },
           child: const Text(
             'Buat Blog',
