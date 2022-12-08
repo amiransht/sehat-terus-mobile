@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -98,15 +97,6 @@ class _LoginPageState extends State<LoginPage> {
                         height: 20.0,
                       ),
                       ElevatedButton(
-                        // onPressed: () {
-                        //   if (_formKey.currentState!.validate()) {
-                        //     ScaffoldMessenger.of(context).showSnackBar(
-                        //       const SnackBar(
-                        //         content: Text('Processing Data'),
-                        //       ),
-                        //     );
-                        //   }
-                        // },
                         onPressed: () async {
                           FocusScopeNode currentFocus = FocusScope.of(context);
                           if (!currentFocus.hasPrimaryFocus) {
@@ -131,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                   content: Text('Login Success'),
                                 ),
                               );
-                              Navigator.pushNamed(context, '/home');
+                              Navigator.pushNamed(context, '/main');
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
