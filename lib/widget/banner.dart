@@ -28,7 +28,7 @@ Widget banner(BuildContext context) {
                     child: Text("Do your own test",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 25.0,
+                            fontSize: 20.0,
                             fontWeight: FontWeight.bold)),
                   ),
                   Padding(
@@ -36,7 +36,7 @@ Widget banner(BuildContext context) {
                     child: Text(
                       "Follow the instructions to do your own test.",
                       style: TextStyle(
-                          fontSize: 16.0, height: 1.3, color: Colors.white),
+                          fontSize: 14.0, height: 1.3, color: Colors.white),
                     ),
                   )
                 ]),

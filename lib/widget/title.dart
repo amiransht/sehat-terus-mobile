@@ -16,20 +16,25 @@ class TitleHeader extends StatelessWidget {
           textTop,
           style: TextStyle(
             color: Colors.blueGrey[900],
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             fontSize: 18,
           ),
         ),
         const SizedBox(
           height: 10,
         ),
-        Text(
-          textBottom!,
-          style: TextStyle(
-            color: Colors.grey,
-            fontWeight: FontWeight.w400,
-            fontSize: 12,
-          ),
+        Padding(
+          padding: const EdgeInsets.all(0.0),
+          child: textBottom != null
+          ? Text(
+              textBottom!,
+              style: TextStyle(
+                color: Colors.grey,
+                fontWeight: FontWeight.w400,
+                fontSize: 12,
+              ),
+            )
+          : null
         ),
       ],
     );

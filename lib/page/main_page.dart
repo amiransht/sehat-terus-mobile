@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehat_terus/core/colors.dart';
+import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/home_page.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
@@ -17,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     DataPage(),
-    FaqPage(),
+    BlogPage(),
     Center(
       child: Text(
         'Post',

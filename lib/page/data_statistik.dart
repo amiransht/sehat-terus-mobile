@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehat_terus/widget/custom_form_field.dart';
 import 'package:sehat_terus/core/colors.dart';
-import 'package:sehat_terus/constant.dart';
 import 'package:sehat_terus/widget/my_header.dart';
 import 'package:sehat_terus/widget/counter.dart';
 import 'package:sehat_terus/models/data_covid.dart';
@@ -143,6 +142,7 @@ class _DataPageState extends State<DataPage> {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
+            padding: EdgeInsets.only(left:25.0),
             hoverColor: BaseColors.white.withOpacity(0.3),
             highlightColor: BaseColors.white.withOpacity(0.3),
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),

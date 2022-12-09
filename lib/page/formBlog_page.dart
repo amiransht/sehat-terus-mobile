@@ -115,11 +115,7 @@ class _BlogFormPageState extends State<BlogFormPage> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       addBlog(request, _title, _content);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const BlogPage()),
-                      );
+                      Navigator.pushReplacementNamed(context, '/blog');
                     }
                   },
                 ),
