@@ -10,7 +10,11 @@ import 'package:sehat_terus/page/data_statistik.dart';
 import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/widget/section5m.dart';
 import 'package:sehat_terus/widget/image_container.dart';
+import 'package:sehat_terus/widget/card.dart';
 import 'package:sehat_terus/constant.dart';
+import 'package:sehat_terus/widget/banner.dart';
+import 'package:sehat_terus/widget/my_header.dart';
+import 'package:sehat_terus/widget/title.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,83 +22,140 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = ScrollController();
+  double offset = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.addListener(onScroll);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
+  }
+
+  void onScroll() {
+    setState(() {
+      offset = (controller.hasClients) ? controller.offset : 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Article article = Article.articles[0];
     return SafeArea(
       child: Scaffold(
-        appBar: buildAppBar(context),
         extendBody: true,
         body: SingleChildScrollView(
+            controller: controller,
             child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 5,
-            ),
-            _buildCarousel(),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _5mHeader(),
-                  const SizedBox(
-                    height: 20,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyHeader(
+                  image: "assets/icons/Drcorona.svg",
+                  textTop: "Get to know",
+                  textBottom: "About COVID-19.",
+                  offset: offset,
+                  isHome: true,
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 5,
                   ),
-                  buildGrid(),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _NewsHeader(),
-                  const SizedBox(
-                    height: 20,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleHeader(
+                          textTop: "Waspada Penularan COVID-19",
+                          textBottom:
+                              "Lindungi diri dan keluarga dari Covid-19 dengan protokol 5m"),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      buildGrid(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TitleHeader(
+                          textTop: "Gejala Covid-19",
+                          textBottom:
+                              'Periksakan diri Anda saat mengalami gejala berikut'),
+                      SizedBox(height: 20),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            CardContainer(
+                              image: "assets/headache.png",
+                              title: "Sakit kepala",
+                            ),
+                            CardContainer(
+                              image: "assets/caugh.png",
+                              title: "Batuk",
+                            ),
+                            CardContainer(
+                              image: "assets/fever.png",
+                              title: "Demam",
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  _BreakingNews(articles: Article.articles),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _BantuanHeader(),
-                  const SizedBox(
-                    height: 10,
+                ),
+                banner(context),
+                Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
                   ),
-                  _buildBantuan(),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
-        )),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleHeader(
+                          textTop: "Berita Terkini",
+                          textBottom:
+                              'Lihat berita terbaru seputar Covid-19 dan Vaksinasi disini'),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      _BreakingNews(articles: Article.articles),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleHeader(
+                          textTop: "Berita Terkini",
+                          textBottom:
+                              'Lihat berita terbaru seputar Covid-19 dan Vaksinasi disini'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      _buildBantuan(),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            )),
       ),
     );
   }
@@ -118,46 +179,19 @@ class _HomePageState extends State<HomePage> {
         },
       ).toList(),
       aspectRatio: 16 / 9,
-      height: 180,
+      height: 240,
       autoPlay: true,
       autoPlayInterval: const Duration(seconds: 3),
       autoPlayCurve: Curves.fastOutSlowIn,
       enableInfiniteScroll: true,
       autoPlayAnimationDuration: const Duration(milliseconds: 800),
-      viewportFraction: 0.8,
+      viewportFraction: 0.9,
       scrollDirection: Axis.horizontal,
       hasPagination: true,
       activeIndicator: BaseColors.white,
       passiveIndicator: Colors.grey,
       pagerSize: 6.0,
       enlargeMainPage: true,
-    );
-  }
-
-  Column _5mHeader() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Waspada Penularan COVID-19",
-          style: TextStyle(
-            color: Colors.blueGrey[900],
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        const Text(
-          'Lindungi diri dan keluarga dari Covid-19 dengan protokol 5m',
-          style: TextStyle(
-            color: Colors.grey,
-            fontWeight: FontWeight.w400,
-            fontSize: 12,
-          ),
-        ),
-      ],
     );
   }
 
@@ -236,60 +270,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Column _NewsHeader() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Berita Terkini",
-          style: TextStyle(
-            color: Colors.blueGrey[900],
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        const Text(
-          'Lihat berita terbaru seputar Covid-19 dan Vaksinasi disini',
-          style: TextStyle(
-            color: Colors.grey,
-            fontWeight: FontWeight.w400,
-            fontSize: 12,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Column _BantuanHeader() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Butuh Bantuan?",
-          style: TextStyle(
-            color: Colors.blueGrey[900],
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        // const Text(
-        //   'Lihat berita terbaru seputar Covid-19 dan Vaksinasi disini',
-        //   style: TextStyle(
-        //     color: Colors.grey,
-        //     fontWeight: FontWeight.w400,
-        //     fontSize: 12,
-        //   ),
-        // ),
-      ],
-    );
-  }
-
   StaggeredGrid _buildBantuan() {
     return StaggeredGrid.count(
       crossAxisCount: 6,
@@ -302,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                 decoration: BoxDecoration(
-                  color: BaseColors.green.withOpacity(0.1),
+                  color: Color.fromARGB(255, 146, 223, 234).withOpacity(0.4),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
@@ -343,7 +323,7 @@ class _HomePageState extends State<HomePage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                 decoration: BoxDecoration(
-                  color: BaseColors.green.withOpacity(0.1),
+                  color: Color.fromARGB(255, 146, 223, 234).withOpacity(0.4),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(

@@ -31,7 +31,7 @@ class App extends StatelessWidget {
         //   primarySwatch: Colors.blue,
         // ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
+        initialRoute: '/faq',
         routes: {
           '/': (context) => const OnboardingScreen(),
           '/main': (context) => const MainPage(),

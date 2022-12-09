@@ -7,16 +7,19 @@ import 'package:sehat_terus/constant.dart';
 
 class MyHeader extends StatefulWidget {
   final String image;
+  final String logo = "assets/logo.png";
   final String textTop;
   final String textBottom;
   final double offset;
-  const MyHeader(
-      {Key? key,
-      required this.image,
-      required this.textTop,
-      required this.textBottom,
-      required this.offset})
-      : super(key: key);
+  final bool isHome;
+  const MyHeader({
+    Key? key,
+    required this.image,
+    required this.textTop,
+    required this.textBottom,
+    required this.offset,
+    required this.isHome,
+  }) : super(key: key);
 
   @override
   _MyHeaderState createState() => _MyHeaderState();
@@ -28,8 +31,8 @@ class _MyHeaderState extends State<MyHeader> {
     return ClipPath(
       clipper: MyClipper(),
       child: Container(
-        padding: const EdgeInsets.only(left: 40, top: 50, right: 20),
-        height: 350,
+        padding: const EdgeInsets.only(left: 15, top: 25, right: 20),
+        height: 290,
         width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -47,7 +50,20 @@ class _MyHeaderState extends State<MyHeader> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            const SizedBox(height: 20),
+            // widget.isHome
+            // ? 
+            GestureDetector(
+              onTap: () {
+                Navigator.pushReplacementNamed(context, '/faq');
+              },
+              child: widget.isHome
+                ? Icon(Icons.question_answer_outlined, 
+                  color: BaseColors.white,
+                  size: 30)
+                : Icon(Icons.info_outline, 
+                  color: BaseColors.white,
+                  size: 30)
+            ),
             Expanded(
               child: Stack(
                 children: <Widget>[
@@ -56,17 +72,25 @@ class _MyHeaderState extends State<MyHeader> {
                     child: SvgPicture.asset(
                       widget.image,
                       width: 230,
-                      fit: BoxFit.fitWidth,
+                      fit: BoxFit.fill,
                       alignment: Alignment.topCenter,
                     ),
                   ),
+
                   Positioned(
-                    top: 50 - widget.offset / 2,
-                    left: 170,
-                    child: Text(
-                      "${widget.textTop} \n${widget.textBottom}",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: BaseColors.white),
-                      ),
+                    top: widget.isHome? 30 - widget.offset / 2
+                                      : 40 - widget.offset / 2,
+                    left: widget.isHome? 130 : 180,
+                    child: widget.isHome
+                        ? Image.asset(widget.logo,
+                          width: 250, fit: BoxFit.fitWidth,)
+                        : Text(
+                            "${widget.textTop} \n${widget.textBottom}",
+                            style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold,
+                                color: BaseColors.white),
+                          ),
                   ),
                   Container(), // I dont know why it can't work without container
                 ],

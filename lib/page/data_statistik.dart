@@ -29,7 +29,6 @@ class _DataPageState extends State<DataPage> {
   double _positiveLokal = 0;
   double _recoveredLokal = 0;
   final controller = ScrollController();
-  double offset = 0;
 
   @override
   void initState() {
@@ -162,7 +161,8 @@ class _DataPageState extends State<DataPage> {
                   image: "assets/icons/Drcorona.svg",
                   textTop: "All you need",
                   textBottom: "is stay at home.",
-                  offset: offset,
+                  offset: 0,
+                  isHome: false,
                 ),
                 FutureBuilder(
                     future: _futureDataCovid,

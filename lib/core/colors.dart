@@ -5,7 +5,7 @@ class BaseColors {
   static const Color white = Colors.white;
 
   static const int _greenPrimaryValue = 0xFF17A2B8;
-  
+
   static const MaterialColor green = MaterialColor(
     _greenPrimaryValue,
     <int, Color>{
@@ -13,6 +13,7 @@ class BaseColors {
       400: Color.fromARGB(255, 182, 224, 230),
     },
   );
+
 
   static const int _redPrimaryValue = 0xFFb83128;
   static const MaterialColor red = MaterialColor(

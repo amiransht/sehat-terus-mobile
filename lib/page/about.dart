@@ -15,7 +15,7 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: buildAppBar(context, "Tentang Aplikasi"),
       extendBody: true,
       body: SingleChildScrollView(
           child: Column(
@@ -97,6 +97,7 @@ class _AboutPageState extends State<AboutPage> {
                       ),
                       GFButton(
                         onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/faq');
                         },
                         text: "Lihat FAQ",
                         size: GFSize.SMALL,

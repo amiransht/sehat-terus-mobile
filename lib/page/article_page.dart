@@ -20,12 +20,17 @@ class ArticlePage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            leading: IconButton(
-              hoverColor: BaseColors.white.withOpacity(0.3),
-              highlightColor: BaseColors.white.withOpacity(0.3),
-              icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-              onPressed: () => Navigator.pushReplacementNamed(context, '/main'),
-            ), 
+            actions:[ 
+              IconButton(
+                padding: EdgeInsets.only(left: 200),
+                hoverColor: BaseColors.white.withOpacity(0.3),
+                highlightColor: BaseColors.white.withOpacity(0.3),
+                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                onPressed: () => Navigator.pushReplacementNamed(context, '/main'),
+              ), 
+              SizedBox(child: Container(
+              ),)
+            ],
             // iconTheme: const IconThemeData(color: Colors.black),
             backgroundColor: Colors.transparent,
             elevation: 0,

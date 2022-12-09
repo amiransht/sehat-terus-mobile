@@ -44,7 +44,7 @@ class Section5mContainer extends StatelessWidget {
             style: const TextStyle(
               color: Colors.black,
               fontSize: 12,
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
