@@ -1,6 +1,6 @@
 import 'package:countup/countup.dart';
-import 'package:sehat_terus/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:sehat_terus/core/colors.dart';
 
 class Counter extends StatelessWidget {
   final double number;

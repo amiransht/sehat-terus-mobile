@@ -4,6 +4,8 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/page/blog_page.dart';
 
+import '../core/colors.dart';
+
 class BlogFormPage extends StatefulWidget {
   const BlogFormPage({super.key});
 
@@ -20,6 +22,8 @@ class _BlogFormPageState extends State<BlogFormPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: BaseColors.green,
+        centerTitle: true,
         title: Text('Form'),
       ),
       body: Form(
@@ -63,7 +67,6 @@ class _BlogFormPageState extends State<BlogFormPage> {
                       return null;
                     },
                   ),
-                  
                 ),
                 Padding(
                   // Menggunakan padding sebesar 8 pixels
@@ -99,30 +102,24 @@ class _BlogFormPageState extends State<BlogFormPage> {
                       return null;
                     },
                   ),
-                  
                 ),
                 TextButton(
-              child: const Text(
-                "Post Blog",
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.blue),
-              ),
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  addBlog(request, _title, _content);
-                  Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const BlogPage()),
-                          );
-                }
-              },
-            ),
+                  child: const Text(
+                    "Post Blog",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(BaseColors.green),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      addBlog(request, _title, _content);
+                      Navigator.pushReplacementNamed(context, '/blog');
+                    }
+                  },
+                ),
               ],
-              
             ),
           ),
         ),

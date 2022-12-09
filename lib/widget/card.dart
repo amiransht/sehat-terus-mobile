@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sehat_terus/constant.dart';
+import 'package:sehat_terus/core/colors.dart';
 
 class CardContainer extends StatelessWidget {
   final String image;
@@ -30,7 +30,7 @@ class CardContainer extends StatelessWidget {
           Image.asset(image, height: 90),
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
           ),
         ],
       ),

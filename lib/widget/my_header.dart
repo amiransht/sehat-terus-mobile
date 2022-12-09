@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehat_terus/core/colors.dart';
-import 'package:sehat_terus/constant.dart';
 
 class MyHeader extends StatefulWidget {
   final String image;

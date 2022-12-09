@@ -1,5 +1,28 @@
 import 'package:flutter/material.dart';
 
+// Colors
+const kBackgroundColor = Color(0xFFFEFEFE);
+const kTitleTextColor = Color(0xFF303030);
+const kBodyTextColor = Color(0xFF4B4B4B);
+const kTextLightColor = Color(0xFF959595);
+const kInfectedColor = BaseColors.green;
+const kDeathColor =  BaseColors.green;
+const kRecovercolor =  BaseColors.green;
+const kPrimaryColor = Color(0xFF3382CC);
+final kShadowColor = Color(0xFFB7B7B7).withOpacity(.16);
+final kActiveShadowColor = Color(0xFF4056C6).withOpacity(.15);
+
+
+
+
+const kSubTextStyle = TextStyle(fontSize: 15, color: kTextLightColor);
+
+const kTitleTextstyle = TextStyle(
+  fontSize: 18,
+  color: kTitleTextColor,
+  fontWeight: FontWeight.bold,
+);
+
 class BaseColors {
   static const Color black = Colors.black;
   static const Color white = Colors.white;

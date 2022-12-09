@@ -29,7 +29,7 @@ AppBar buildAppBar(BuildContext context, judul) {
             splashRadius: 20.0,
             splashColor: BaseColors.green.withOpacity(0.3),
             highlightColor: BaseColors.green.withOpacity(0.3),
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+            icon: Icon(Icons.arrow_back_ios, color: BaseColors.green),
             onPressed: () => Navigator.pushReplacementNamed(context, '/main'),
           ),
         titleSpacing: 5.0,

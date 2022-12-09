@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehat_terus/core/colors.dart';
-import 'package:sehat_terus/constant.dart';
+
 
 class Section5mContainer extends StatelessWidget {
   final Color color;
@@ -43,8 +43,8 @@ class Section5mContainer extends StatelessWidget {
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: Colors.black,
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
+              fontSize: 10,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],

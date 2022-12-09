@@ -11,7 +11,6 @@ import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/widget/section5m.dart';
 import 'package:sehat_terus/widget/image_container.dart';
 import 'package:sehat_terus/widget/card.dart';
-import 'package:sehat_terus/constant.dart';
 import 'package:sehat_terus/widget/banner.dart';
 import 'package:sehat_terus/widget/my_header.dart';
 import 'package:sehat_terus/widget/title.dart';
@@ -80,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       buildGrid(),
                       const SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
                       TitleHeader(
                           textTop: "Gejala Covid-19",
@@ -141,9 +140,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TitleHeader(
-                          textTop: "Berita Terkini",
-                          textBottom:
-                              'Lihat berita terbaru seputar Covid-19 dan Vaksinasi disini'),
+                          textTop: "Butuh Bantuan?"),
                       const SizedBox(
                         height: 10,
                       ),
@@ -310,7 +307,7 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.black,
                           letterSpacing: 0.2,
                           fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -351,7 +348,7 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.black,
                           letterSpacing: 0.5,
                           fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],

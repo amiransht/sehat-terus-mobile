@@ -267,6 +267,7 @@ class _LoginAppState extends State<LoginApp> {
                                         fontWeight: FontWeight.w700),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
+                                        print("register");
                                         launchUrl(Uri.parse(
                                             "${AppConfig.apiUrl}authentication/register/"));
                                       },
