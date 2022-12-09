@@ -22,16 +22,9 @@ class _BlogPageState extends State<BlogPage> {
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
-          backgroundColor: Colors.white,
-          title: const Text(
-            'Blog',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 22,
-              color: Colors.black54,
-            ),
-          ),
+          backgroundColor: BaseColors.green,
+          centerTitle: true,
+          title: const Text('Blog'),
         ),
         
         body: FutureBuilder(
@@ -60,7 +53,7 @@ class _BlogPageState extends State<BlogPage> {
                       padding: const EdgeInsets.all(20.0),
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        border: Border.all(color: BaseColors.green),
+                        border: Border.all(color: BaseColors.green,),
                       ),
         
                         child: Column(
