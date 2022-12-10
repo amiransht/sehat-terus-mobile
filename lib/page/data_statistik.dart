@@ -37,12 +37,14 @@ class _DataPageState extends State<DataPage> {
         url,
       );
       var data = jsonDecode(utf8.decode(response.bodyBytes));
+      
 
       List<ListData> listDataCovid = [];
       //print(data['list_data']);
 
       for (var d in data['list_data']) {
         if (d != null) {
+
           listDataCovid.add(ListData.fromJson(d));
         }
       }

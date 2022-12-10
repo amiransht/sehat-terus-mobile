@@ -2,24 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:sehat_terus/core/colors.dart';
 
 AppBar buildAppBar(BuildContext context, judul) {
-  if (ModalRoute.of(context)!.settings.name == "/main" ||
-      ModalRoute.of(context)!.settings.name == "/home") {
+  if (ModalRoute.of(context)!.settings.name == "/blog" ) {
     return AppBar(
-        // leading: null,
-        //   actions: const[
-        //     Icon(
-        //       Icons.message_outlined,
-        //       size: 20,
-        //     ),
-        //     SizedBox(
-        //       width: 15,
-        //     )
-        //   ],
-        //   centerTitle: true,
-        //   elevation: 2.2,
-        //   backgroundColor: Colors.transparent,
-        //   iconTheme: const IconThemeData(color: BaseColors.black),
-        //   shadowColor: BaseColors.black
+        leading: Padding(padding: EdgeInsets.all(0)),
+        title: Text(
+              judul,
+              style: TextStyle(color: BaseColors.black, fontSize: 18),
+            ),
+          centerTitle: true,
+          elevation: 2.2,
+          backgroundColor: Colors.transparent,
         );
   } else {
     return AppBar(

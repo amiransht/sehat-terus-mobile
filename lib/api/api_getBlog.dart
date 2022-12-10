@@ -3,7 +3,11 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 Future<List<DataBlog>> fetchBlog(request) async {
   var url = 'https://sehat-terus.up.railway.app/faq-page/getblog';
+  print("atas response");
   var response = await request.get(url);
+  print("halo");
+  //print(response);
+  print("iya ga halo");
 
   var data = response;
 
@@ -12,7 +16,7 @@ Future<List<DataBlog>> fetchBlog(request) async {
 
   for (var d in data) {
     if (d != null) {
-      print(d);
+      // print(d);
       dataBlog.add(DataBlog.fromJson(d));
     }
   }
@@ -24,5 +28,7 @@ addBlog(request, title, content) async {
   var response = await request.post(
       'https://sehat-terus.up.railway.app/faq-page/submit_blog',
       {"title": title, "content": content});
+  print(title);
+  print(content);
   return response;
 }
