@@ -191,7 +191,7 @@ class _LoginAppState extends State<LoginApp> {
                                         isLoading = true;
                                       });
                                       final response = await request.login(
-                                          "${AppConfig.apiUrl}authentication/login_flutter/",
+                                          "http://localhost:8000/authentication/login_flutter/",
                                           {
                                             "username": username,
                                             "password": password1,

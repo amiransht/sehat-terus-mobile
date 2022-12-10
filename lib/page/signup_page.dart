@@ -19,6 +19,7 @@ class _SignUpAppState extends State<SignUpApp> {
   String username = '';
   String password1 = '';
   String password2 = '';
+  String email = 'changeyouremailhere@example.com';
   bool isLoading = false;
   String role = 'Lurah';
   final List<String> _roles = ['Nakes', 'Lurah'];
@@ -260,10 +261,13 @@ class _SignUpAppState extends State<SignUpApp> {
                                         isLoading = true;
                                       });
                                       final response = await request.login(
-                                          "${AppConfig.apiUrl}authentication/login_flutter/",
+                                          "http://localhost:8000/authentication/register_flutter/",
                                           {
                                             "username": username,
-                                            "password": password1,
+                                            "password1": password1,
+                                            "password2": password2,
+                                            "email": email,
+                                            "role_user": role
                                           });
                                       setState(() {
                                         isLoading = false;
@@ -273,44 +277,36 @@ class _SignUpAppState extends State<SignUpApp> {
                                             .showSnackBar(
                                           const SnackBar(
                                             content: Text(
-                                                '(Login Berhasil) Selamat Datang Kembali!'),
+                                                '(Registrasi Berhasil) Selamat Datang !'),
                                             backgroundColor: Colors.teal,
                                             behavior: SnackBarBehavior.floating,
-                                            // action: SnackBarAction(
-                                            //   label: 'Dismiss',
-                                            //   disabledTextColor: Colors.white,
-                                            //   textColor: Colors.yellow,
-                                            //   onPressed: () {
-                                            //     //Do whatever you want
-                                            //   },
-                                            // ),
                                           ),
+                                          // ScaffoldMessenger.of(context)
+                                          //     .showSnackBar(
+                                          //   const SnackBar(
+                                          //     content: Text(
+                                          //         '(Registrasi Berhasil) Selamat Datang !'),
+                                          //     backgroundColor: Colors.teal,
+                                          //     behavior: SnackBarBehavior.floating,
+                                          //     // action: SnackBarAction(
+                                          //     //   label: 'Dismiss',
+                                          //     //   disabledTextColor: Colors.white,
+                                          //     //   textColor: Colors.yellow,
+                                          //     //   onPressed: () {
+                                          //     //     //Do whatever you want
+                                          //     //   },
+                                          //     // ),
+                                          //   ),
                                         );
                                         Navigator.pushNamed(context, '/main');
                                       } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                'Email atau password yang anda masukkan tidak ditemukan'),
-
-                                            backgroundColor: Colors.teal,
-                                            behavior: SnackBarBehavior.floating,
-                                            // action: SnackBarAction(
-                                            //   label: 'Dismiss',
-                                            //   disabledTextColor: Colors.white,
-                                            //   textColor: Colors.yellow,
-                                            //   onPressed: () {
-                                            //     //Do whatever you want
-                                            //   },
-                                            // ),
-                                          ),
-                                        );
+                                        showSnackBarError(
+                                            context, response['message']);
                                       }
                                     }
                                   },
                                   child: const Text(
-                                    'LOGIN',
+                                    'Register',
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
@@ -375,10 +371,10 @@ class _SignUpAppState extends State<SignUpApp> {
   }
 }
 
-void showSnackBar(BuildContext context) {
+void showSnackBarError(BuildContext context, String teks) {
   final snackBar = SnackBar(
-    content: Text('Hi, Flutter developers'),
-    backgroundColor: Colors.teal,
+    content: Text(teks),
+    backgroundColor: Color.fromARGB(255, 150, 0, 0),
     behavior: SnackBarBehavior.floating,
     action: SnackBarAction(
       label: 'Dismiss',
