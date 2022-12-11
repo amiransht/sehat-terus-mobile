@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Article article = Article.articles[0];
+
     return SafeArea(
       child: Scaffold(
         extendBody: true,
@@ -139,8 +140,7 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TitleHeader(
-                          textTop: "Butuh Bantuan?"),
+                      TitleHeader(textTop: "Butuh Bantuan?"),
                       const SizedBox(
                         height: 10,
                       ),

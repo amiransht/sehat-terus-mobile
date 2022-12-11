@@ -55,7 +55,10 @@ class _MainPageState extends State<MainPage> {
     final args = ModalRoute.of(context)!.settings.arguments == null
         ? false
         : ModalRoute.of(context)!.settings.arguments as bool;
+    print("lurah kh?");
     print(args);
+    print("logged in kh? ");
+    print(request.loggedIn);
     return SafeArea(
         child: Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
