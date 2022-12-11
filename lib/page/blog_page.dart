@@ -44,18 +44,6 @@ class _BlogPageState extends State<BlogPage> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            leading: IconButton(
-                padding: EdgeInsets.only(left: 20),
-                hoverColor: BaseColors.white.withOpacity(0.3),
-                highlightColor: BaseColors.white.withOpacity(0.3),
-                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                onPressed: () => Navigator.pushReplacementNamed(context, '/faq'),
-              ), 
-            // iconTheme: const IconThemeData(color: Colors.black),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
           body: Container(
             margin: const EdgeInsets.only(top: 10),
             child: FutureBuilder(
@@ -77,108 +65,106 @@ class _BlogPageState extends State<BlogPage> {
                       );
                     } else {
                       return ListView.builder(
-                        //physics: const AlwaysScrollableScrollPhysics(),
-                        //shrinkWrap: true,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (_, index) => GestureDetector(
-                          onTap: () {
+                          //physics: const AlwaysScrollableScrollPhysics(),
+                          //shrinkWrap: true,
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (_, index) => GestureDetector(
+                              onTap: () {
                                 print("detailblog");
-                                Navigator.pushReplacementNamed(
-                                    context, "/detailblog",
+                                Navigator.pushNamed(context, "/main/detailblog",
                                     arguments: snapshot.data![index]);
                               },
-                          child: Container(
-                            margin: const EdgeInsets.all(10.0),
-                            padding: const EdgeInsets.all(20.0),
-                            decoration: BoxDecoration(
-                              color: BaseColors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              // borderRadius: BorderRadius.all(
-                              //   Radius.circular(20)),
-                              // border: Border(
-                              //     bottom: BorderSide(
-                              //         color: BaseColors.black.withOpacity(0.3),
-                              //         width: 0.5)),
-                            ),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  //AUTHOR
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.person,
-                                        size: 16,
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text("Amira Nisrina",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Text("${snapshot.data![index].title}",
-                                              style: const TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w600)),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Text("Nov 1, 2022",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodySmall),
-                                              const SizedBox(
-                                                width: 5,
-                                              ),
-                                              const Text("|"),
-                                              const SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("Politics",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodySmall),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 0),
-                                        child: Image.asset(
-                                          "assets/news5.png",
-                                          width: 100,
+                              child: Container(
+                                margin: const EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(20.0),
+                                decoration: BoxDecoration(
+                                  color: BaseColors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  // borderRadius: BorderRadius.all(
+                                  //   Radius.circular(20)),
+                                  // border: Border(
+                                  //     bottom: BorderSide(
+                                  //         color: BaseColors.black.withOpacity(0.3),
+                                  //         width: 0.5)),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    //AUTHOR
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        const Icon(
+                                          Icons.person,
+                                          size: 16,
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )
-                        )
-                        );
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text("Amira Nisrina",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                                "${snapshot.data![index].title}",
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w600)),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text("Nov 1, 2022",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                const Text("|"),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text("Politics",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 0),
+                                          child: Image.asset(
+                                            "assets/news5.png",
+                                            width: 100,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )));
                     }
                   }
                 }),
-          
           ),
           // ]),
         ));

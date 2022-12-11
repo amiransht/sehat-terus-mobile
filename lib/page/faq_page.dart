@@ -5,6 +5,8 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/core/colors.dart';
+import 'package:sehat_terus/page/main_page.dart';
+import 'package:sehat_terus/page/formBlog_page.dart';
 import 'package:sehat_terus/widget/title.dart';
 
 class FaqPage extends StatelessWidget {
@@ -220,7 +222,12 @@ class FaqPage extends StatelessWidget {
                         children: [
                           GFButton(
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, '/blog');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainPage(setPageAtIndex: 2,),
+                                ),
+                              );
                             },
                             text: "Lihat Blog",
                             size: GFSize.SMALL,
@@ -236,7 +243,23 @@ class FaqPage extends StatelessWidget {
                           ),
                           GFButton(
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, '/formblog');
+
+                              //if(request.loggedIn){
+                              //if (isNakes){
+                              //Navigator.pushReplacementNamed(context, '/formblog');
+                              //}
+                              // } else {
+                              //   ScaffoldMessenger.of(context)
+                              //                 .showSnackBar(
+                              //               const SnackBar(
+                              //                 content: Text(
+                              //                     'Login sebagai Nakes!'),
+                              //                 backgroundColor: Colors.teal,
+                              //                 behavior:
+                              //                     SnackBarBehavior.floating,
+                              //               ),
+                              //             );
+                              // }
                             },
                             text: "Buat Blog",
                             size: GFSize.SMALL,

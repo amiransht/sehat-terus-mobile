@@ -11,21 +11,30 @@ import 'package:sehat_terus/page/profilepage.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+  final int? setPageAtIndex;
+  const MainPage({
+    Key? key,
+    this.setPageAtIndex,}) : super(key: key);
 
   @override
   State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
 
   final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     DataPage(),
     BlogPage(),
-    LoginApp()
+    Profile()
   ];
+
+  @override
+  void initState() {
+    _selectedIndex = widget.setPageAtIndex ?? 0;
+    super.initState();
+  }
 
   final List<BottomNavigationBarItem> _tabsButton =
       const <BottomNavigationBarItem>[
@@ -43,7 +52,7 @@ class _MainPageState extends State<MainPage> {
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person),
-      label: 'Log Out',
+      label: 'Profil',
     ),
   ];
 

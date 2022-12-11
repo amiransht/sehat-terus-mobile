@@ -40,7 +40,7 @@ class _DataPageState extends State<DataPage> {
       
 
       List<ListData> listDataCovid = [];
-      //print(data['list_data']);
+      print(data['list_data']);
 
       for (var d in data['list_data']) {
         if (d != null) {
@@ -142,18 +142,6 @@ class _DataPageState extends State<DataPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            padding: EdgeInsets.only(left:25.0),
-            hoverColor: BaseColors.white.withOpacity(0.3),
-            highlightColor: BaseColors.white.withOpacity(0.3),
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-            onPressed: () => Navigator.pushReplacementNamed(context, '/main'),
-          ),
-          // iconTheme: const IconThemeData(color: Colors.black),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
         extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
           child: Padding(

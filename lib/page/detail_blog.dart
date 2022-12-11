@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:sehat_terus/page/main_page.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/widget/image_container.dart';
 
@@ -23,8 +24,10 @@ class DetailBlogPage extends StatelessWidget {
                 hoverColor: BaseColors.white.withOpacity(0.3),
                 highlightColor: BaseColors.white.withOpacity(0.3),
                 icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                onPressed: () => Navigator.pushReplacementNamed(context, '/blog'),
-              ), 
+                onPressed: () {
+                  MainPage(setPageAtIndex: 2);
+                  Navigator.pop(context);
+                }),
             // iconTheme: const IconThemeData(color: Colors.black),
             backgroundColor: Colors.transparent,
             elevation: 0,
