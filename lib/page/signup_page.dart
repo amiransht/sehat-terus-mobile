@@ -2,8 +2,6 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/gestures.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:sehat_terus/config.dart';
 import 'package:email_validator/email_validator.dart';
@@ -300,6 +298,7 @@ class _SignUpAppState extends State<SignUpApp> {
                                         isLoading = true;
                                       });
                                       final response = await request.login(
+                                          // "http://localhost:8000/authentication/register_flutter/",
                                           "${AppConfig.apiUrl}authentication/register_flutter/",
                                           {
                                             "username": username,

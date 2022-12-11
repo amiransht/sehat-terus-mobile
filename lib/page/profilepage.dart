@@ -39,13 +39,13 @@ class _ProfileState extends State<Profile> {
                   onPressed: () async {
                     Navigator.pushReplacementNamed(context, '/login');
                   },
-                  child: const Text('Login first'),
+                  child: const Text('Login terlebih dahulu'),
                 ),
                 ElevatedButton(
                   onPressed: () async {
                     Navigator.pushReplacementNamed(context, '/main');
                   },
-                  child: const Text('Back to main page'),
+                  child: const Text('Kembali ke halaman utama'),
                 ),
               ],
             ),
@@ -66,8 +66,17 @@ class _ProfileState extends State<Profile> {
               children: [
                 Text('Username: ${args.username}'),
                 Text('Email: ${args.email}'),
-                // Text('Password: ${args.password}'),
+                Text('Password: ${args.password}'),
                 Text('Role : ${args.isLurah ? 'Lurah' : 'Nakes'}'),
+                Text('Nama Depan: ${args.firstName}'),
+                Text('Nama Belakang: ${args.lastName}'),
+                Text('Provinsi: ${args.province}'),
+                Text('Kota: ${args.city}'),
+                Text('Kecamatan: ${args.district}'),
+                Text('Jenis Kelamin: ${args.gender}'),
+                Text('Nomor Telepon: ${args.phone}'),
+                // Text('Tanggal Lahir: ${args.birthDate}'),
+                Text('Bio: ${args.bio}'),
                 Text('Anda bisa mengatur profil anda pada website kami :'),
                 TextButton(
                   child: const Text('Klik Disini'),
