@@ -6,6 +6,7 @@ import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/home_page.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
+import 'package:sehat_terus/page/login_pageui.dart';
 import 'package:sehat_terus/page/logout.dart';
 import 'package:sehat_terus/page/profilepage.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -24,14 +25,7 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     DataPage(),
     BlogPage(),
-    // Center(
-    //   child: Text(
-    //     'Post',
-    //     // style: optionStyle,
-    //   ),
-    // ),
-    const LogOut(),
-    // const Profile(),
+    LoginApp()
   ];
 
   final List<BottomNavigationBarItem> _tabsButton =
