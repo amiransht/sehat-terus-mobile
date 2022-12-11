@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/core/colors.dart';
+import 'package:sehat_terus/models/user_role.dart';
 import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/home_page.dart';
@@ -49,12 +50,18 @@ class _MainPageState extends State<MainPage> {
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person),
-      label: 'Log Out',
+      label: 'Profile',
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+    // IS LURAH
+    final args = ModalRoute.of(context)!.settings.arguments == null
+        ? false
+        : ModalRoute.of(context)!.settings.arguments as bool;
+    print(args);
     return SafeArea(
         child: Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),

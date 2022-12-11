@@ -22,6 +22,7 @@ class _LoginAppState extends State<LoginApp> {
   String username = '';
   String password1 = '';
   bool isLoading = false;
+  bool isLurah = false;
 
   @override
   Widget build(BuildContext context) {
@@ -205,6 +206,7 @@ class _LoginAppState extends State<LoginApp> {
                                       });
                                       if (request.loggedIn) {
                                         if (response["is_lurah"]) {
+                                          isLurah = true;
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             const SnackBar(
