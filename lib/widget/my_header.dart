@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehat_terus/core/colors.dart';
+import 'package:sehat_terus/page/faq_page.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 class MyHeader extends StatefulWidget {
   final String image;
@@ -11,20 +13,24 @@ class MyHeader extends StatefulWidget {
   final String textBottom;
   final double offset;
   final bool isHome;
-  const MyHeader({
-    Key? key,
-    required this.image,
-    required this.textTop,
-    required this.textBottom,
-    required this.offset,
-    required this.isHome,
-  }) : super(key: key);
+  final User? userLoggedIn;
+  const MyHeader(
+      {Key? key,
+      required this.image,
+      required this.textTop,
+      required this.textBottom,
+      required this.offset,
+      required this.isHome,
+      this.userLoggedIn})
+      : super(key: key);
 
   @override
   _MyHeaderState createState() => _MyHeaderState();
 }
 
 class _MyHeaderState extends State<MyHeader> {
+
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
@@ -50,19 +56,24 @@ class _MyHeaderState extends State<MyHeader> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             // widget.isHome
-            // ? 
+            // ?
             GestureDetector(
-              onTap: () {
-                Navigator.pushReplacementNamed(context, '/faq');
-              },
-              child: widget.isHome
-                ? Icon(Icons.question_answer_outlined, 
-                  color: BaseColors.white,
-                  size: 30)
-                : Icon(Icons.info_outline, 
-                  color: BaseColors.white,
-                  size: 30)
-            ),
+                onTap: () {
+                  // Navigator.pushReplacementNamed(context, '/faq');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FaqPage(
+                        user: widget.userLoggedIn,
+                      ),
+                    ),
+                  );
+                },
+                child: widget.isHome
+                    ? Icon(Icons.question_answer_outlined,
+                        color: BaseColors.white, size: 30)
+                    : Icon(Icons.info_outline,
+                        color: BaseColors.white, size: 30)),
             Expanded(
               child: Stack(
                 children: <Widget>[
@@ -77,12 +88,16 @@ class _MyHeaderState extends State<MyHeader> {
                   ),
 
                   Positioned(
-                    top: widget.isHome? 30 - widget.offset / 2
-                                      : 40 - widget.offset / 2,
-                    left: widget.isHome? 130 : 180,
+                    top: widget.isHome
+                        ? 30 - widget.offset / 2
+                        : 40 - widget.offset / 2,
+                    left: widget.isHome ? 130 : 180,
                     child: widget.isHome
-                        ? Image.asset(widget.logo,
-                          width: 250, fit: BoxFit.fitWidth,)
+                        ? Image.asset(
+                            widget.logo,
+                            width: 250,
+                            fit: BoxFit.fitWidth,
+                          )
                         : Text(
                             "${widget.textTop} \n${widget.textBottom}",
                             style: TextStyle(

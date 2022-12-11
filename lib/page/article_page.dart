@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/widget/image_container.dart';
+import 'package:sehat_terus/models/user_profile.dart';
+import 'package:sehat_terus/page/main_page.dart';
 
 import '../models/article_model.dart';
 // import '../widgets/custom_tag.dart';
 
 class ArticlePage extends StatelessWidget {
-  const ArticlePage({Key? key}) : super(key: key);
+  final User? user;
+  const ArticlePage({Key? key, this.user}) : super(key: key);
   static const routeName = '/article';
 
   @override
   Widget build(BuildContext context) {
+    print("artikel: nakes? ");
+    print(user?.isNakes);
     final article = ModalRoute.of(context)!.settings.arguments as Article;
-    
+
     return ImageContainer(
         width: double.infinity,
         image: article.image,
@@ -21,12 +26,19 @@ class ArticlePage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             leading: IconButton(
-                padding: EdgeInsets.only(left: 20),
-                hoverColor: BaseColors.white.withOpacity(0.3),
-                highlightColor: BaseColors.white.withOpacity(0.3),
-                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                onPressed: () => Navigator.pushReplacementNamed(context, '/main'),
-              ), 
+              padding: EdgeInsets.only(left: 20),
+              hoverColor: BaseColors.white.withOpacity(0.3),
+              highlightColor: BaseColors.white.withOpacity(0.3),
+              icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainPage(
+                                    setPageAtIndex: 0, userLoggedIn: user,
+                                  ),
+                                ),
+                              ),
+            ),
             // iconTheme: const IconThemeData(color: Colors.black),
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -133,7 +145,8 @@ class _NewsHeadline extends StatelessWidget {
           GFButton(
             onPressed: () {},
             text: article.source,
-            textStyle: TextStyle(fontWeight: FontWeight.bold, color: BaseColors.black),
+            textStyle:
+                TextStyle(fontWeight: FontWeight.bold, color: BaseColors.black),
             type: GFButtonType.solid,
             borderSide: BorderSide(width: 1, color: BaseColors.black),
             shape: GFButtonShape.pills,

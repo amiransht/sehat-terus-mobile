@@ -204,6 +204,7 @@ class _LoginAppState extends State<LoginApp> {
                                       setState(() {
                                         isLoading = false;
                                       });
+
                                       if (request.loggedIn) {
                                         if (response["is_lurah"]) {
                                           isLurah = true;
@@ -211,90 +212,86 @@ class _LoginAppState extends State<LoginApp> {
                                               .showSnackBar(
                                             const SnackBar(
                                               content: Text(
-                                                  '(Login Berhasil) Selamat Datang Kembali!'),
+                                                  '(Login Berhasil) Selamat Datang Kembali LURAH!'),
                                               backgroundColor: Colors.teal,
                                               behavior:
                                                   SnackBarBehavior.floating,
                                             ),
                                           );
-                                          Navigator.of(context)
-                                              .pushReplacementNamed("/profile",
-                                                  arguments: UserArguments(
-                                                      response["is_lurah"],
-                                                      response["is_nakes"],
-                                                      response["username"],
-                                                      response["email"],
-                                                      password1,
-                                                      true,
-                                                      response["first_name"],
-                                                      response["last_name"],
-                                                      response["province"],
-                                                      response["bio"],
-                                                      response["city"],
-                                                      response["gender"],
-                                                      response["number_phone"],
-                                                      response["date_of_birth"],
-                                                      response["district"]));
+
+                                          // Navigator.of(context)
+                                          //     .pushReplacementNamed("/profile",
+                                          //         arguments: User(
+                                          //             response["is_lurah"],
+                                          //             response["is_nakes"],
+                                          //             response["username"],
+                                          //             response["email"],
+                                          //             password1,
+                                          //             true,
+                                          //             response["first_name"],
+                                          //             response["last_name"],
+                                          //             response["province"],
+                                          //             response["bio"],
+                                          //             response["city"],
+                                          //             response["gender"],
+                                          //             response["number_phone"],
+                                          //             response["date_of_birth"],
+                                          //             response["district"]));
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             const SnackBar(
                                               content: Text(
-                                                  '(Login Berhasil) Selamat Datang Kembali!'),
+                                                  '(Login Berhasil) Selamat Datang Kembali NAKES!'),
                                               backgroundColor: Colors.teal,
                                               behavior:
                                                   SnackBarBehavior.floating,
                                             ),
                                           );
-                                          Navigator.of(context)
-                                              .pushReplacementNamed("/profile",
-                                                  arguments: UserArguments(
-                                                      response["is_lurah"],
-                                                      response["is_nakes"],
-                                                      response["username"],
-                                                      response["email"],
-                                                      password1,
-                                                      true,
-                                                      response["first_name"],
-                                                      response["last_name"],
-                                                      response["province"],
-                                                      response["bio"],
-                                                      response["city"],
-                                                      response["gender"],
-                                                      response["number_phone"],
-                                                      response["date_of_birth"],
-                                                      response["district"]));
                                         }
-                                        // ScaffoldMessenger.of(context)
-                                        //     .showSnackBar(
-                                        //   const SnackBar(
-                                        //     content: Text(
-                                        //         '(Login Berhasil) Selamat Datang Kembali!'),
-                                        //     backgroundColor: Colors.teal,
-                                        //     behavior: SnackBarBehavior.floating,
-                                        //   ),
-                                        // );
-                                        // Navigator.pushNamed(context, '/main');
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                'Email atau password yang anda masukkan tidak ditemukan'),
-
-                                            backgroundColor: Colors.teal,
-                                            behavior: SnackBarBehavior.floating,
-                                            // action: SnackBarAction(
-                                            //   label: 'Dismiss',
-                                            //   disabledTextColor: Colors.white,
-                                            //   textColor: Colors.yellow,
-                                            //   onPressed: () {
-                                            //     //Do whatever you want
-                                            //   },
-                                            // ),
+                                        User userLoggedIn = User(
+                                            isLurah: response["is_lurah"],
+                                            isNakes: response["is_nakes"],
+                                            username: response["username"],
+                                            email: response["email"],
+                                            password: password1,
+                                            isLoggedIn: true,
+                                            firstName: response["first_name"],
+                                            lastName: response["last_name"],
+                                            province: response["province"],
+                                            bio: response["bio"],
+                                            city: response["city"],
+                                            gender: response["gender"],
+                                            phone: response["number_phone"],
+                                            birthDate: response["date_of_birth"],
+                                            district: response["district"]);
+                                        
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => MainPage(setPageAtIndex: 0, userLoggedIn: userLoggedIn,),
                                           ),
                                         );
                                       }
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                              'Email atau password yang anda masukkan tidak ditemukan'),
+
+                                          backgroundColor: Colors.teal,
+                                          behavior: SnackBarBehavior.floating,
+                                          // action: SnackBarAction(
+                                          //   label: 'Dismiss',
+                                          //   disabledTextColor: Colors.white,
+                                          //   textColor: Colors.yellow,
+                                          //   onPressed: () {
+                                          //     //Do whatever you want
+                                          //   },
+                                          // ),
+                                        ),
+                                      );
                                     }
                                   },
                                   child: const Text(

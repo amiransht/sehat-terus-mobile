@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:sehat_terus/page/main_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../config.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  final User? user;
+  const Profile({Key? key, this.user}) : super(key: key);
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -20,7 +22,10 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    print("profil: nakes? ");
+    print(widget.user?.isNakes);
     final request = context.watch<CookieRequest>();
+
     // final args = ModalRoute.of(context)!.settings.arguments as UserArguments;
     // var args = null;
 
@@ -53,7 +58,7 @@ class _ProfileState extends State<Profile> {
         ),
       );
     } else {
-      var args = ModalRoute.of(context)!.settings.arguments as UserArguments;
+      var args = widget.user;
       return Scaffold(
         appBar: AppBar(
           title: const Text('Informasi Login'),
@@ -64,19 +69,19 @@ class _ProfileState extends State<Profile> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Username: ${args.username}'),
-                Text('Email: ${args.email}'),
-                Text('Password: ${args.password}'),
-                Text('Role : ${args.isLurah ? 'Lurah' : 'Nakes'}'),
-                Text('Nama Depan: ${args.firstName}'),
-                Text('Nama Belakang: ${args.lastName}'),
-                Text('Provinsi: ${args.province}'),
-                Text('Kota: ${args.city}'),
-                Text('Kecamatan: ${args.district}'),
-                Text('Jenis Kelamin: ${args.gender}'),
-                Text('Nomor Telepon: ${args.phone}'),
+                Text('Username: ${args!.username}'),
+                Text('Email: ${args!.email}'),
+                Text('Password: ${args!.password}'),
+                Text('Role : ${args!.isLurah ? 'Lurah' : 'Nakes'}'),
+                Text('Nama Depan: ${args!.firstName}'),
+                Text('Nama Belakang: ${args!.lastName}'),
+                Text('Provinsi: ${args!.province}'),
+                Text('Kota: ${args!.city}'),
+                Text('Kecamatan: ${args!.district}'),
+                Text('Jenis Kelamin: ${args!.gender}'),
+                Text('Nomor Telepon: ${args!.phone}'),
                 // Text('Tanggal Lahir: ${args.birthDate}'),
-                Text('Bio: ${args.bio}'),
+                Text('Bio: ${args!.bio}'),
                 Text('Anda bisa mengatur profil anda pada website kami :'),
                 TextButton(
                   child: const Text('Klik Disini'),
@@ -87,8 +92,13 @@ class _ProfileState extends State<Profile> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    Navigator.of(context)
-                        .pushReplacementNamed('/main', arguments: args.isLurah);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainPage(userLoggedIn: widget.user, setPageAtIndex: 0,),
+                      ),
+                    );
+
                   },
                   child: const Text('Kembali ke halaman utama'),
                 ),

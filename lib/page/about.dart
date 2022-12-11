@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/core/colors.dart';
+import 'package:sehat_terus/page/faq_page.dart';
 import 'package:stroke_text/stroke_text.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 class AboutPage extends StatefulWidget {
-  const AboutPage({Key? key}) : super(key: key);
+  final User? user;
+  const AboutPage({Key? key, this.user}) : super(key: key);
 
   @override
   State<AboutPage> createState() => _AboutPageState();
@@ -15,7 +18,7 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context, "Tentang Aplikasi"),
+      appBar: buildAppBar(context, "Tentang Aplikasi", widget.user),
       extendBody: true,
       body: SingleChildScrollView(
           child: Column(
@@ -97,7 +100,14 @@ class _AboutPageState extends State<AboutPage> {
                       ),
                       GFButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/faq');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FaqPage(
+                                user: widget.user,
+                              ),
+                            ),
+                          );
                         },
                         text: "Lihat FAQ",
                         size: GFSize.SMALL,

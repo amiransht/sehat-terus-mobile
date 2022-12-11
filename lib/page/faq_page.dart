@@ -8,17 +8,22 @@ import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/page/main_page.dart';
 import 'package:sehat_terus/page/formBlog_page.dart';
 import 'package:sehat_terus/widget/title.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 class FaqPage extends StatelessWidget {
-  const FaqPage({Key? key}) : super(key: key);
-  static const routeName = '/faq';
+  final User? user;
+  const FaqPage({Key? key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    // final isNakes = ModalRoute.of(context)!.settings.arguments;
+    print("faq: isnakes?");
+    print(user?.isNakes);
+
     return Scaffold(
         extendBody: true,
-        appBar: buildAppBar(context, "FAQ"),
+        appBar: buildAppBar(context, "FAQ", user),
         body: SingleChildScrollView(
             child: Column(children: [
           Padding(
@@ -225,7 +230,9 @@ class FaqPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MainPage(setPageAtIndex: 2,),
+                                  builder: (context) => MainPage(
+                                    setPageAtIndex: 2, userLoggedIn: user,
+                                  ),
                                 ),
                               );
                             },
@@ -243,23 +250,25 @@ class FaqPage extends StatelessWidget {
                           ),
                           GFButton(
                             onPressed: () {
-
-                              //if(request.loggedIn){
-                              //if (isNakes){
-                              //Navigator.pushReplacementNamed(context, '/formblog');
-                              //}
-                              // } else {
-                              //   ScaffoldMessenger.of(context)
-                              //                 .showSnackBar(
-                              //               const SnackBar(
-                              //                 content: Text(
-                              //                     'Login sebagai Nakes!'),
-                              //                 backgroundColor: Colors.teal,
-                              //                 behavior:
-                              //                     SnackBarBehavior.floating,
-                              //               ),
-                              //             );
-                              // }
+                              if (request.loggedIn && user!.isNakes ) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => BlogFormPage(
+                                      user: user,
+                                    ),
+                                  ),
+                                );
+                                
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Login sebagai Nakes!'),
+                                    backgroundColor: Colors.teal,
+                                    behavior: SnackBarBehavior.floating,
+                                  ),
+                                );
+                              }
                             },
                             text: "Buat Blog",
                             size: GFSize.SMALL,

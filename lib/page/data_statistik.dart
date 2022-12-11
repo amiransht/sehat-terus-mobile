@@ -5,11 +5,13 @@ import 'package:sehat_terus/widget/my_header.dart';
 import 'package:sehat_terus/widget/counter.dart';
 import 'package:sehat_terus/models/data_covid.dart';
 import 'package:sehat_terus/models/data_covid_lokal.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class DataPage extends StatefulWidget {
-  const DataPage({Key? key}) : super(key: key);
+  final User? user;
+  const DataPage({Key? key, this.user}) : super(key: key);
 
   @override
   State<DataPage> createState() => _DataPageState();
@@ -153,6 +155,7 @@ class _DataPageState extends State<DataPage> {
                   textBottom: "is stay at home.",
                   offset: 0,
                   isHome: false,
+                  userLoggedIn: widget.user,
                 ),
                 FutureBuilder(
                     future: _futureDataCovid,

@@ -5,8 +5,10 @@ import 'package:getwidget/getwidget.dart';
 import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/models/article_model.dart';
+import 'package:sehat_terus/page/about.dart';
 import 'package:sehat_terus/page/article_page.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
+import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/widget/section5m.dart';
 import 'package:sehat_terus/widget/image_container.dart';
@@ -14,14 +16,19 @@ import 'package:sehat_terus/widget/card.dart';
 import 'package:sehat_terus/widget/banner.dart';
 import 'package:sehat_terus/widget/my_header.dart';
 import 'package:sehat_terus/widget/title.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 class HomePage extends StatefulWidget {
+  final User? user;
+
+  const HomePage({Key? key, this.user}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   final controller = ScrollController();
+  late User? userLoggedIn;
   double offset = 0;
 
   @override
@@ -29,6 +36,7 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
+    userLoggedIn = widget.user;
   }
 
   @override
@@ -47,6 +55,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Article article = Article.articles[0];
+    // final isLurah = ModalRoute.of(context)!.settings.arguments;
+    print("homepage: nakes? ");
+    print(userLoggedIn?.isNakes);
 
     return SafeArea(
       child: Scaffold(
@@ -62,6 +73,7 @@ class _HomePageState extends State<HomePage> {
                   textBottom: "About COVID-19.",
                   offset: offset,
                   isHome: true,
+                  userLoggedIn: userLoggedIn,
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(
@@ -125,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(
                         height: 20,
                       ),
-                      _BreakingNews(articles: Article.articles),
+                      _BreakingNews(articles: Article.articles, user: userLoggedIn,),
                     ],
                   ),
                 ),
@@ -144,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(
                         height: 10,
                       ),
-                      _buildBantuan(),
+                      _buildBantuan(userLoggedIn?.isNakes),
                     ],
                   ),
                 ),
@@ -267,7 +279,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  StaggeredGrid _buildBantuan() {
+  StaggeredGrid _buildBantuan(bool? isNakes) {
     return StaggeredGrid.count(
       crossAxisCount: 6,
       crossAxisSpacing: 15,
@@ -291,7 +303,12 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, '/about');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AboutPage(user: userLoggedIn,),
+                      ),
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -332,7 +349,14 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, '/faq');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FaqPage(user: userLoggedIn,),
+                      ),
+                    );
+                    // Navigator.of(context)
+                    //     .pushReplacementNamed('/faq', arguments: isNakes);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -361,11 +385,13 @@ class _HomePageState extends State<HomePage> {
 
 class _BreakingNews extends StatelessWidget {
   const _BreakingNews({
+    this.user,
     Key? key,
     required this.articles,
   }) : super(key: key);
 
   final List<Article> articles;
+  final User? user;
 
   @override
   Widget build(BuildContext context) {
@@ -383,9 +409,13 @@ class _BreakingNews extends StatelessWidget {
                     margin: const EdgeInsets.only(right: 10),
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushReplacementNamed(context, '/article',
-                            arguments: articles[index]);
-                        print(ModalRoute.of(context)!.settings.arguments);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            settings: RouteSettings(arguments: articles[index]),
+                            builder: (context) => ArticlePage(user: user),
+                          ),
+                        );
                       },
                       child: Container(
                         decoration: BoxDecoration(

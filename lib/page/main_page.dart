@@ -10,12 +10,13 @@ import 'package:sehat_terus/page/login_pageui.dart';
 import 'package:sehat_terus/page/logout.dart';
 import 'package:sehat_terus/page/profilepage.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 class MainPage extends StatefulWidget {
   final int? setPageAtIndex;
-  const MainPage({
-    Key? key,
-    this.setPageAtIndex,}) : super(key: key);
+  final User? userLoggedIn;
+  const MainPage({Key? key, this.setPageAtIndex, this.userLoggedIn})
+      : super(key: key);
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -23,22 +24,19 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   late int _selectedIndex;
+  late User? userLoggedIn;
 
-  final List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    DataPage(),
-    BlogPage(),
-    Profile()
-  ];
 
   @override
   void initState() {
     _selectedIndex = widget.setPageAtIndex ?? 0;
+    userLoggedIn = widget.userLoggedIn;
+
     super.initState();
   }
 
-  final List<BottomNavigationBarItem> _tabsButton =
-      const <BottomNavigationBarItem>[
+
+  final List<BottomNavigationBarItem> _tabsButton =const <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
       label: 'Home',
@@ -60,17 +58,17 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    // IS LURAH
-    final args = ModalRoute.of(context)!.settings.arguments == null
-        ? false
-        : ModalRoute.of(context)!.settings.arguments as bool;
-    print("lurah kh?");
-    print(args);
-    print("logged in kh? ");
-    print(request.loggedIn);
+    print("udh login?");
+    print(userLoggedIn?.isLoggedIn);
+
     return SafeArea(
-        child: Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
+      child: Scaffold(
+      body: <Widget>[
+            HomePage(user: userLoggedIn),
+            DataPage(user: userLoggedIn),
+            BlogPage(user: userLoggedIn),
+            Profile(user: userLoggedIn)
+          ].elementAt(_selectedIndex),
       bottomNavigationBar: Container(
           height: 69.0,
           child: BottomNavigationBar(

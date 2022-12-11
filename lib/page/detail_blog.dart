@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/main_page.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/widget/image_container.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 import '../models/data_blog.dart';
 // import '../widgets/custom_tag.dart';
 
 class DetailBlogPage extends StatelessWidget {
-  const DetailBlogPage({Key? key}) : super(key: key);
+  final User? user;
+  const DetailBlogPage({Key? key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print("detailblog: nakes? ");
+    print(user?.isNakes);
     final blog = ModalRoute.of(context)!.settings.arguments as DataBlog;
     return ImageContainer(
         width: double.infinity,
@@ -25,8 +30,17 @@ class DetailBlogPage extends StatelessWidget {
                 highlightColor: BaseColors.white.withOpacity(0.3),
                 icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                 onPressed: () {
-                  MainPage(setPageAtIndex: 2);
-                  Navigator.pop(context);
+                  // MainPage(setPageAtIndex: 2);
+                  // Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainPage(
+                         setPageAtIndex: 2,
+                         userLoggedIn: user,
+                      ),
+                    ),
+                  );
                 }),
             // iconTheme: const IconThemeData(color: Colors.black),
             backgroundColor: Colors.transparent,

@@ -15,9 +15,11 @@ import 'package:provider/provider.dart';
 import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/widget/title.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 class BlogPage extends StatefulWidget {
-  const BlogPage({Key? key}) : super(key: key);
+  final User? user;
+  const BlogPage({Key? key, this.user}) : super(key: key);
 
   @override
   _BlogPageState createState() => _BlogPageState();
@@ -26,6 +28,8 @@ class BlogPage extends StatefulWidget {
 class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
+    print("blog: nakes? ");
+    print(widget.user?.isNakes);
     final request = context.watch<CookieRequest>();
     // TODO: implement build
     return Container(
@@ -70,9 +74,15 @@ class _BlogPageState extends State<BlogPage> {
                           itemCount: snapshot.data!.length,
                           itemBuilder: (_, index) => GestureDetector(
                               onTap: () {
-                                print("detailblog");
-                                Navigator.pushNamed(context, "/main/detailblog",
-                                    arguments: snapshot.data![index]);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    settings: RouteSettings(arguments:snapshot.data![index] ),
+                                    builder: (context) => DetailBlogPage(
+                                      user:widget.user,
+                                    ),
+                                  ),
+                                );
                               },
                               child: Container(
                                 margin: const EdgeInsets.all(10.0),
