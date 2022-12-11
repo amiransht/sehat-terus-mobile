@@ -236,7 +236,7 @@ class FaqPage extends StatelessWidget {
                           ),
                           GFButton(
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, '/blog');
+                              Navigator.pushReplacementNamed(context, '/formblog');
                             },
                             text: "Buat Blog",
                             size: GFSize.SMALL,

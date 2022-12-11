@@ -8,6 +8,13 @@ import 'package:sehat_terus/models/data_blog.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:sehat_terus/page/detail_blog.dart';
+import 'package:getwidget/getwidget.dart';
+
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:sehat_terus/appbar.dart';
+import 'package:sehat_terus/core/colors.dart';
+import 'package:sehat_terus/widget/title.dart';
 
 class BlogPage extends StatefulWidget {
   const BlogPage({Key? key}) : super(key: key);
@@ -37,8 +44,20 @@ class _BlogPageState extends State<BlogPage> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            leading: IconButton(
+                padding: EdgeInsets.only(left: 20),
+                hoverColor: BaseColors.white.withOpacity(0.3),
+                highlightColor: BaseColors.white.withOpacity(0.3),
+                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                onPressed: () => Navigator.pushReplacementNamed(context, '/faq'),
+              ), 
+            // iconTheme: const IconThemeData(color: Colors.black),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
           body: Container(
-            margin: const EdgeInsets.only(top: 160),
+            margin: const EdgeInsets.only(top: 10),
             child: FutureBuilder(
                 future: fetchBlog(request),
                 builder: (context, AsyncSnapshot snapshot) {
@@ -159,6 +178,7 @@ class _BlogPageState extends State<BlogPage> {
                     }
                   }
                 }),
+          
           ),
           // ]),
         ));
