@@ -5,7 +5,7 @@ import '../models/data_pasien_lokal.dart';
 
 Future<List<DataPasienLokal>> dataPasien() async {
   print("fetching data..");
-  var url = Uri.parse('https://sehat-terus.up.railway.app/lurah-page/json/');
+  var url = Uri.parse('http://localhost:8000/lurah-page/json-flutter/');
   var response = await http.get(
     url,
     headers: {
@@ -23,7 +23,7 @@ Future<List<DataPasienLokal>> dataPasien() async {
 
   for (var d in data) {
     if (d != null) {
-      // print(d);
+      print(d);
       listDataLokal.add(DataPasienLokal.fromJson(d));
     }
   }
