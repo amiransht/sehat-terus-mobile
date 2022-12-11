@@ -87,7 +87,8 @@ class _ProfileState extends State<Profile> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    Navigator.pushReplacementNamed(context, '/main');
+                    Navigator.of(context)
+                        .pushReplacementNamed('/main', arguments: args.isLurah);
                   },
                   child: const Text('Kembali ke halaman utama'),
                 ),
