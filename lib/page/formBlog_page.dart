@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:sehat_terus/api/api_getBlog.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -22,10 +23,17 @@ class _BlogFormPageState extends State<BlogFormPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: BaseColors.green,
-        centerTitle: true,
-        title: Text('Form'),
-      ),
+            leading: IconButton(
+                padding: EdgeInsets.only(left: 20),
+                hoverColor: BaseColors.green.withOpacity(0.3),
+                highlightColor: BaseColors.green.withOpacity(0.3),
+                icon: Icon(Icons.arrow_back_ios, color: BaseColors.green),
+                onPressed: () => Navigator.pushReplacementNamed(context, '/faq'),
+              ), 
+            // iconTheme: const IconThemeData(color: Colors.black),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -44,8 +52,10 @@ class _BlogFormPageState extends State<BlogFormPage> {
                       icon: const Icon(Icons.book),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(width: 3,color: BaseColors.green)
                       ),
+                      
                     ),
                     // Menambahkan behavior saat nama diketik
                     onChanged: (String? value) {
@@ -79,7 +89,7 @@ class _BlogFormPageState extends State<BlogFormPage> {
                       icon: const Icon(Icons.book),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                     // Menambahkan behavior saat nama diketik
@@ -103,22 +113,38 @@ class _BlogFormPageState extends State<BlogFormPage> {
                     },
                   ),
                 ),
-                TextButton(
-                  child: const Text(
-                    "Post Blog",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(BaseColors.green),
-                  ),
+                GFButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       addBlog(request, _title, _content);
                       Navigator.pushReplacementNamed(context, '/blog');
                     }
                   },
+                  text: "Post Blog",
+                  size: GFSize.SMALL,
+                  type: GFButtonType.outline,
+                  shape: GFButtonShape.pills,
+                  color: BaseColors.black,
+                  splashColor: BaseColors.green,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12, vertical: 0),
                 ),
+                // TextButton(
+                //   child: const Text(
+                //     "Post Blog",
+                //     style: TextStyle(color: Colors.white),
+                //   ),
+                //   style: ButtonStyle(
+                //     backgroundColor:
+                //         MaterialStateProperty.all(BaseColors.green),
+                //   ),
+                //   onPressed: () {
+                //     if (_formKey.currentState!.validate()) {
+                //       addBlog(request, _title, _content);
+                //       Navigator.pushReplacementNamed(context, '/blog');
+                //     }
+                //   },
+                // ),
               ],
             ),
           ),

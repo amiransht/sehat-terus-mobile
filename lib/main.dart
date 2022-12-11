@@ -13,6 +13,8 @@ import 'package:sehat_terus/page/nakes_page.dart';
 import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/page/article_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
+import 'package:sehat_terus/page/profilepage.dart';
+import 'package:sehat_terus/page/signup_page.dart';
 
 void main() {
   runApp(const App());
@@ -49,6 +51,8 @@ class App extends StatelessWidget {
           '/blog': (context) => const BlogPage(),
           '/detailblog': (context) => const DetailBlogPage(),
           '/nakes': (context) => const NakesPage(),
+          '/signup': (context) => const SignUpApp(),
+          '/profile': (context) => const Profile(),
         },
       ),
     );
