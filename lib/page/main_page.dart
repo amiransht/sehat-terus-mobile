@@ -4,6 +4,8 @@ import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/home_page.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
+import 'package:sehat_terus/page/logout.dart';
+import 'package:sehat_terus/page/profilepage.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -19,12 +21,14 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     DataPage(),
     BlogPage(),
-    Center(
-      child: Text(
-        'Post',
-        // style: optionStyle,
-      ),
-    ),
+    // Center(
+    //   child: Text(
+    //     'Post',
+    //     // style: optionStyle,
+    //   ),
+    // ),
+    const LogOut(),
+    // const Profile(),
   ];
 
   final List<BottomNavigationBarItem> _tabsButton =
@@ -43,7 +47,7 @@ class _MainPageState extends State<MainPage> {
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person),
-      label: 'Profil',
+      label: 'Log Out',
     ),
   ];
 
@@ -80,9 +84,9 @@ class _MainPageState extends State<MainPage> {
         //   _count++;
         //   print('You like Indonesia $_count time(s)');
 
-          // }),
-          child: const Icon(Icons.add),
-        ),
+        // }),
+        child: const Icon(Icons.add),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     ));
   }
