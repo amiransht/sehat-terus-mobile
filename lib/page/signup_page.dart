@@ -2,26 +2,27 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:sehat_terus/main.dart';
-import 'package:sehat_terus/page/main_page.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/src/material/snack_bar.dart';
+import 'package:group_radio_button/group_radio_button.dart';
 import 'package:sehat_terus/config.dart';
-import 'package:sehat_terus/models/user_profile.dart';
+import 'package:email_validator/email_validator.dart';
 
-class LoginApp extends StatefulWidget {
-  const LoginApp({Key? key}) : super(key: key);
+class SignUpApp extends StatefulWidget {
+  const SignUpApp({Key? key}) : super(key: key);
 
   @override
-  _LoginAppState createState() => _LoginAppState();
+  _SignUpAppState createState() => _SignUpAppState();
 }
 
-class _LoginAppState extends State<LoginApp> {
+class _SignUpAppState extends State<SignUpApp> {
   final _formKey = GlobalKey<FormState>();
   String username = '';
   String password1 = '';
+  String password2 = '';
+  String email = '';
+
   bool isLoading = false;
+  String role = 'Lurah';
+  final List<String> _roles = ['Nakes', 'Lurah'];
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class _LoginAppState extends State<LoginApp> {
                 // child: Container(
                 //   image: Image.asset(
                 //     "assets/5m-5.png",
-                //     height: 60,
+                //     height: 40,
                 //   ),
                 // ),
               ),
@@ -70,7 +71,7 @@ class _LoginAppState extends State<LoginApp> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      height: 30,
+                      height: 40,
                     ),
                     const Text(
                       "Hi!",
@@ -83,14 +84,14 @@ class _LoginAppState extends State<LoginApp> {
                       height: 10,
                     ),
                     const Text(
-                      "Please Login to Your Account",
+                      "Register Yourself as Nakes/Lurah",
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 15,
                       ),
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     Form(
                         key: _formKey,
@@ -98,7 +99,7 @@ class _LoginAppState extends State<LoginApp> {
                           children: [
                             Container(
                               width: 260,
-                              height: 60,
+                              height: 40,
                               child: TextFormField(
                                 decoration: const InputDecoration(
                                   labelText: 'Username',
@@ -127,11 +128,48 @@ class _LoginAppState extends State<LoginApp> {
                               ),
                             ),
                             const SizedBox(
-                              height: 20.0,
+                              height: 10.0,
                             ),
                             Container(
                               width: 260,
-                              height: 60,
+                              height: 40,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Email',
+                                  hintText: 'youremail@example.com',
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                  ),
+                                ),
+                                validator: (String? value) {
+                                  bool isValid =
+                                      EmailValidator.validate(value!);
+                                  if (value == null ||
+                                      value.isEmpty ||
+                                      !isValid) {
+                                    return 'Please enter a valid email (example@example.example)';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (String? value) {
+                                  setState(() {
+                                    email = value!;
+                                  });
+                                },
+                                onSaved: (String? value) {
+                                  setState(() {
+                                    email = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            Container(
+                              width: 260,
+                              height: 40,
                               child: TextFormField(
                                 obscureText: true,
                                 decoration: const InputDecoration(
@@ -165,6 +203,72 @@ class _LoginAppState extends State<LoginApp> {
                               ),
                             ),
                             const SizedBox(
+                              height: 10.0,
+                            ),
+                            Container(
+                              width: 260,
+                              height: 40,
+                              child: TextFormField(
+                                obscureText: true,
+                                decoration: const InputDecoration(
+                                  labelText: 'Password Confirmation',
+                                  suffix: Icon(
+                                    FontAwesomeIcons.eyeSlash,
+                                    color: Colors.red,
+                                  ),
+                                  hintText: 'Confirm password',
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                  ),
+                                ),
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter password for confirmation';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (String? value) {
+                                  setState(() {
+                                    password2 = value!;
+                                  });
+                                },
+                                onSaved: (String? value) {
+                                  setState(() {
+                                    password2 = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            const Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Choose your role',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            RadioGroup<String>.builder(
+                              direction: Axis.horizontal,
+                              horizontalAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              groupValue: role,
+                              onChanged: (value) => setState(() {
+                                role = value!;
+                              }),
+                              items: _roles,
+                              itemBuilder: (item) => RadioButtonBuilder(
+                                item,
+                                textPosition: RadioButtonTextPosition.right,
+                              ),
+                              textStyle: const TextStyle(fontSize: 12),
+                            ),
+                            const SizedBox(
                               height: 20.0,
                             ),
                             GestureDetector(
@@ -194,109 +298,53 @@ class _LoginAppState extends State<LoginApp> {
                                         isLoading = true;
                                       });
                                       final response = await request.login(
-                                          "${AppConfig.apiUrl}authentication/login_flutter/",
-                                          // "http://localhost:8000/authentication/login_flutter/",
+                                          // "http://localhost:8000/authentication/register_flutter/",
+                                          "${AppConfig.apiUrl}authentication/register_flutter/",
                                           {
                                             "username": username,
-                                            "password": password1,
+                                            "password1": password1,
+                                            "password2": password2,
+                                            "email": email,
+                                            "role_user": role
                                           });
                                       setState(() {
                                         isLoading = false;
                                       });
                                       if (request.loggedIn) {
-                                        if (response["is_lurah"]) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                  '(Login Berhasil) Selamat Datang Kembali!'),
-                                              backgroundColor: Colors.teal,
-                                              behavior:
-                                                  SnackBarBehavior.floating,
-                                            ),
-                                          );
-                                          Navigator.of(context)
-                                              .pushReplacementNamed("/profile",
-                                                  arguments: UserArguments(
-                                                      response["is_lurah"],
-                                                      response["is_nakes"],
-                                                      response["username"],
-                                                      response["email"],
-                                                      password1,
-                                                      true,
-                                                      response["first_name"],
-                                                      response["last_name"],
-                                                      response["province"],
-                                                      response["bio"],
-                                                      response["city"],
-                                                      response["gender"],
-                                                      response["number_phone"],
-                                                      response["date_of_birth"],
-                                                      response["district"]));
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                  '(Login Berhasil) Selamat Datang Kembali!'),
-                                              backgroundColor: Colors.teal,
-                                              behavior:
-                                                  SnackBarBehavior.floating,
-                                            ),
-                                          );
-                                          Navigator.of(context)
-                                              .pushReplacementNamed("/profile",
-                                                  arguments: UserArguments(
-                                                      response["is_lurah"],
-                                                      response["is_nakes"],
-                                                      response["username"],
-                                                      response["email"],
-                                                      password1,
-                                                      true,
-                                                      response["first_name"],
-                                                      response["last_name"],
-                                                      response["province"],
-                                                      response["bio"],
-                                                      response["city"],
-                                                      response["gender"],
-                                                      response["number_phone"],
-                                                      response["date_of_birth"],
-                                                      response["district"]));
-                                        }
-                                        // ScaffoldMessenger.of(context)
-                                        //     .showSnackBar(
-                                        //   const SnackBar(
-                                        //     content: Text(
-                                        //         '(Login Berhasil) Selamat Datang Kembali!'),
-                                        //     backgroundColor: Colors.teal,
-                                        //     behavior: SnackBarBehavior.floating,
-                                        //   ),
-                                        // );
-                                        // Navigator.pushNamed(context, '/main');
-                                      } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
                                             content: Text(
-                                                'Email atau password yang anda masukkan tidak ditemukan'),
-
+                                                '(Registrasi Berhasil) Silahkan login untuk melanutkan'),
                                             backgroundColor: Colors.teal,
                                             behavior: SnackBarBehavior.floating,
-                                            // action: SnackBarAction(
-                                            //   label: 'Dismiss',
-                                            //   disabledTextColor: Colors.white,
-                                            //   textColor: Colors.yellow,
-                                            //   onPressed: () {
-                                            //     //Do whatever you want
-                                            //   },
-                                            // ),
                                           ),
+                                          // ScaffoldMessenger.of(context)
+                                          //     .showSnackBar(
+                                          //   const SnackBar(
+                                          //     content: Text(
+                                          //         '(Registrasi Berhasil) Selamat Datang !'),
+                                          //     backgroundColor: Colors.teal,
+                                          //     behavior: SnackBarBehavior.floating,
+                                          //     // action: SnackBarAction(
+                                          //     //   label: 'Dismiss',
+                                          //     //   disabledTextColor: Colors.white,
+                                          //     //   textColor: Colors.yellow,
+                                          //     //   onPressed: () {
+                                          //     //     //Do whatever you want
+                                          //     //   },
+                                          //     // ),
+                                          //   ),
                                         );
+                                        Navigator.pushNamed(context, '/login');
+                                      } else {
+                                        showSnackBarError(
+                                            context, response['message']);
                                       }
                                     }
                                   },
                                   child: const Text(
-                                    'LOGIN',
+                                    'Register',
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
@@ -305,30 +353,31 @@ class _LoginAppState extends State<LoginApp> {
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: const EdgeInsets.all(5),
-                              child: RichText(
-                                text: TextSpan(children: [
-                                  const TextSpan(
-                                      text: "No Account? ",
-                                      style: TextStyle(
-                                          fontFamily: "Poppins",
-                                          color: Colors.grey)),
-                                  TextSpan(
-                                    text: "Create a New One",
-                                    style: const TextStyle(
-                                        fontFamily: "Poppins",
-                                        color:
-                                            Color.fromARGB(255, 92, 102, 161),
-                                        fontWeight: FontWeight.w700),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Navigator.pushNamed(context, '/signup');
-                                      },
-                                  )
-                                ]),
-                              ),
-                            )
+                            // Container(
+                            //   padding: const EdgeInsets.all(5),
+                            //   child: RichText(
+                            //     text: TextSpan(children: [
+                            //       const TextSpan(
+                            //           text: "No Account? ",
+                            //           style: TextStyle(
+                            //               fontFamily: "Poppins",
+                            //               color: Colors.grey)),
+                            //       TextSpan(
+                            //         text: "Create a New One",
+                            //         style: const TextStyle(
+                            //             fontFamily: "Poppins",
+                            //             color: Colors.indigo,
+                            //             fontWeight: FontWeight.w700),
+                            //         recognizer: TapGestureRecognizer()
+                            //           ..onTap = () {
+                            //             print("register");
+                            //             launchUrl(Uri.parse(
+                            //                 "${AppConfig.apiUrl}authentication/register/"));
+                            //           },
+                            //       )
+                            //     ]),
+                            //   ),
+                            // )
                           ],
                         )),
                     const SizedBox(
@@ -360,10 +409,10 @@ class _LoginAppState extends State<LoginApp> {
   }
 }
 
-void showSnackBar(BuildContext context) {
+void showSnackBarError(BuildContext context, String teks) {
   final snackBar = SnackBar(
-    content: Text('Hi, Flutter developers'),
-    backgroundColor: Colors.teal,
+    content: Text(teks),
+    backgroundColor: Color.fromARGB(255, 150, 0, 0),
     behavior: SnackBarBehavior.floating,
     action: SnackBarAction(
       label: 'Dismiss',

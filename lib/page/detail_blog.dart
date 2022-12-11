@@ -3,20 +3,18 @@ import 'package:getwidget/getwidget.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/widget/image_container.dart';
 
-import '../models/article_model.dart';
+import '../models/data_blog.dart';
 // import '../widgets/custom_tag.dart';
 
-class ArticlePage extends StatelessWidget {
-  const ArticlePage({Key? key}) : super(key: key);
-  static const routeName = '/article';
+class DetailBlogPage extends StatelessWidget {
+  const DetailBlogPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final article = ModalRoute.of(context)!.settings.arguments as Article;
-    
+    final blog = ModalRoute.of(context)!.settings.arguments as DataBlog;
     return ImageContainer(
         width: double.infinity,
-        image: article.image,
+        image: "assets/news2.jpeg",
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
@@ -25,19 +23,19 @@ class ArticlePage extends StatelessWidget {
                 hoverColor: BaseColors.white.withOpacity(0.3),
                 highlightColor: BaseColors.white.withOpacity(0.3),
                 icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                onPressed: () => Navigator.pushReplacementNamed(context, '/main'),
+                onPressed: () => Navigator.pushReplacementNamed(context, '/blog'),
               ), 
             // iconTheme: const IconThemeData(color: Colors.black),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
-          extendBodyBehindAppBar: true,
+          //extendBodyBehindAppBar: true,
           body: ListView(
             children: [
               _NewsHeadline(
-                article: article,
+                blog: blog,
               ),
-              _NewsBody(article: article)
+              _NewsBody(blog: blog)
             ],
           ),
         ));
@@ -47,10 +45,10 @@ class ArticlePage extends StatelessWidget {
 class _NewsBody extends StatelessWidget {
   const _NewsBody({
     Key? key,
-    required this.article,
+    required this.blog,
   }) : super(key: key);
 
-  final Article article;
+  final DataBlog blog;
 
   @override
   Widget build(BuildContext context) {
@@ -65,46 +63,19 @@ class _NewsBody extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              GFButton(
-                onPressed: () {},
-                text: article.author,
-                type: GFButtonType.outline,
-                shape: GFButtonShape.pills,
-                color: BaseColors.green,
-                // textColor: BaseColors.black,
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
-              ),
-              const SizedBox(width: 10),
-              Row(
-                children: [
-                  GFButton(
-                    onPressed: () {},
-                    text: article.createdAt,
-                    type: GFButtonType.outline,
-                    shape: GFButtonShape.pills,
-                    color: BaseColors.green,
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
-                  ),
-                  const SizedBox(width: 10)
-                ],
-              ),
-            ],
-          ),
           const SizedBox(height: 10),
-          Text(article.title,
+          Text(blog.title,
               style: Theme.of(context)
                   .textTheme
                   .headlineSmall!
                   .copyWith(fontWeight: FontWeight.bold)),
           const SizedBox(height: 20),
-          Text(article.body,
+          Text(blog.content,
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
                   .copyWith(height: 1.5)),
-          const SizedBox(height: 50),
+          const SizedBox(height: 300),
         ],
       ),
     );
@@ -114,10 +85,10 @@ class _NewsBody extends StatelessWidget {
 class _NewsHeadline extends StatelessWidget {
   const _NewsHeadline({
     Key? key,
-    required this.article,
+    required this.blog,
   }) : super(key: key);
 
-  final Article article;
+  final DataBlog blog;
 
   @override
   Widget build(BuildContext context) {
@@ -130,23 +101,23 @@ class _NewsHeadline extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.20,
           ),
-          GFButton(
-            onPressed: () {},
-            text: article.source,
-            textStyle: TextStyle(fontWeight: FontWeight.bold, color: BaseColors.black),
-            type: GFButtonType.solid,
-            borderSide: BorderSide(width: 1, color: BaseColors.black),
-            shape: GFButtonShape.pills,
-            color: BaseColors.white.withOpacity(0.7),
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+          // GFButton(
+          //   onPressed: () {},
+          //   text: blog.source,
+          //   textStyle: TextStyle(fontWeight: FontWeight.bold, color: BaseColors.black),
+          //   type: GFButtonType.solid,
+          //   borderSide: BorderSide(width: 1, color: BaseColors.black),
+          //   shape: GFButtonShape.pills,
+          //   color: BaseColors.white.withOpacity(0.7),
+          //   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+          // ),
+          const SizedBox(height: 10),
+          Text(
+            blog.title,
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                fontWeight: FontWeight.bold, color: Colors.white, height: 1.25),
           ),
           const SizedBox(height: 10),
-          // Text(
-          //   article.title,
-          //   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-          //       fontWeight: FontWeight.bold, color: Colors.white, height: 1.25),
-          // ),
-          // const SizedBox(height: 10),
         ],
       ),
     );

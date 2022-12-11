@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/home_page.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
+import 'package:sehat_terus/page/login_pageui.dart';
+import 'package:sehat_terus/page/logout.dart';
+import 'package:sehat_terus/page/profilepage.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -19,12 +24,7 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     DataPage(),
     BlogPage(),
-    Center(
-      child: Text(
-        'Post',
-        // style: optionStyle,
-      ),
-    ),
+    LoginApp()
   ];
 
   final List<BottomNavigationBarItem> _tabsButton =
@@ -43,7 +43,7 @@ class _MainPageState extends State<MainPage> {
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person),
-      label: 'Profil',
+      label: 'Log Out',
     ),
   ];
 
@@ -80,9 +80,9 @@ class _MainPageState extends State<MainPage> {
         //   _count++;
         //   print('You like Indonesia $_count time(s)');
 
-          // }),
-          child: const Icon(Icons.add),
-        ),
+        // }),
+        child: const Icon(Icons.add),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     ));
   }
