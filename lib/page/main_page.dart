@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
@@ -6,6 +7,7 @@ import 'package:sehat_terus/page/home_page.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
 import 'package:sehat_terus/page/logout.dart';
 import 'package:sehat_terus/page/profilepage.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);

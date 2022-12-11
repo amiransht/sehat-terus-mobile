@@ -195,6 +195,7 @@ class _LoginAppState extends State<LoginApp> {
                                       });
                                       final response = await request.login(
                                           "${AppConfig.apiUrl}authentication/login_flutter/",
+                                          // "http://localhost:8000/authentication/login_flutter/",
                                           {
                                             "username": username,
                                             "password": password1,
@@ -221,8 +222,17 @@ class _LoginAppState extends State<LoginApp> {
                                                       response["is_nakes"],
                                                       response["username"],
                                                       response["email"],
-                                                      response["password"],
-                                                      true));
+                                                      password1,
+                                                      true,
+                                                      response["first_name"],
+                                                      response["last_name"],
+                                                      response["province"],
+                                                      response["bio"],
+                                                      response["city"],
+                                                      response["gender"],
+                                                      response["number_phone"],
+                                                      response["date_of_birth"],
+                                                      response["district"]));
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
@@ -241,8 +251,17 @@ class _LoginAppState extends State<LoginApp> {
                                                       response["is_nakes"],
                                                       response["username"],
                                                       response["email"],
-                                                      response["password"],
-                                                      true));
+                                                      password1,
+                                                      true,
+                                                      response["first_name"],
+                                                      response["last_name"],
+                                                      response["province"],
+                                                      response["bio"],
+                                                      response["city"],
+                                                      response["gender"],
+                                                      response["number_phone"],
+                                                      response["date_of_birth"],
+                                                      response["district"]));
                                         }
                                         // ScaffoldMessenger.of(context)
                                         //     .showSnackBar(
