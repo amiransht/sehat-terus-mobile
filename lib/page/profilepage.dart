@@ -1,7 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../config.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -23,7 +27,7 @@ class _ProfileState extends State<Profile> {
     if (!request.loggedIn) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Profile'),
+          title: const Text('Informasi Login'),
         ),
         body: Center(
           child: Form(
@@ -52,7 +56,7 @@ class _ProfileState extends State<Profile> {
       var args = ModalRoute.of(context)!.settings.arguments as UserArguments;
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Profile'),
+          title: const Text('Informasi Login'),
         ),
         body: Center(
           child: Form(
@@ -64,21 +68,19 @@ class _ProfileState extends State<Profile> {
                 Text('Email: ${args.email}'),
                 // Text('Password: ${args.password}'),
                 Text('Role : ${args.isLurah ? 'Lurah' : 'Nakes'}'),
-                // ElevatedButton(
-                //   onPressed: () async {
-                //     final response = await request
-                //         .logout("localhost:8000/authentication/logout_flutter/");
-                //     if (response != null) {
-                //       Navigator.pushReplacementNamed(context, '/login');
-                //     }
-                //   },
-                //   child: const Text('Logout'),
-                // ),
+                Text('Anda bisa mengatur profil anda pada website kami :'),
+                TextButton(
+                  child: const Text('Klik Disini'),
+                  onPressed: () {
+                    launchUrl(Uri.parse(
+                        "${AppConfig.apiUrl}authentication/setting/"));
+                  },
+                ),
                 ElevatedButton(
                   onPressed: () async {
                     Navigator.pushReplacementNamed(context, '/main');
                   },
-                  child: const Text('Back to main page'),
+                  child: const Text('Kembali ke halaman utama'),
                 ),
               ],
             ),
