@@ -2,10 +2,13 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:sehat_terus/main.dart';
+import 'package:sehat_terus/page/main_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/src/material/snack_bar.dart';
 import 'package:sehat_terus/config.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 class LoginApp extends StatefulWidget {
   const LoginApp({Key? key}) : super(key: key);
@@ -191,7 +194,7 @@ class _LoginAppState extends State<LoginApp> {
                                         isLoading = true;
                                       });
                                       final response = await request.login(
-                                          "http://localhost:8000/authentication/login_flutter/",
+                                          "${AppConfig.apiUrl}authentication/login_flutter/",
                                           {
                                             "username": username,
                                             "password": password1,
@@ -200,24 +203,57 @@ class _LoginAppState extends State<LoginApp> {
                                         isLoading = false;
                                       });
                                       if (request.loggedIn) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                '(Login Berhasil) Selamat Datang Kembali!'),
-                                            backgroundColor: Colors.teal,
-                                            behavior: SnackBarBehavior.floating,
-                                            // action: SnackBarAction(
-                                            //   label: 'Dismiss',
-                                            //   disabledTextColor: Colors.white,
-                                            //   textColor: Colors.yellow,
-                                            //   onPressed: () {
-                                            //     //Do whatever you want
-                                            //   },
-                                            // ),
-                                          ),
-                                        );
-                                        Navigator.pushNamed(context, '/main');
+                                        if (response["is_lurah"]) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                  '(Login Berhasil) Selamat Datang Kembali!'),
+                                              backgroundColor: Colors.teal,
+                                              behavior:
+                                                  SnackBarBehavior.floating,
+                                            ),
+                                          );
+                                          Navigator.of(context)
+                                              .pushReplacementNamed("/profile",
+                                                  arguments: UserArguments(
+                                                      response["is_lurah"],
+                                                      response["is_nakes"],
+                                                      response["username"],
+                                                      response["email"],
+                                                      response["password"],
+                                                      true));
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                  '(Login Berhasil) Selamat Datang Kembali!'),
+                                              backgroundColor: Colors.teal,
+                                              behavior:
+                                                  SnackBarBehavior.floating,
+                                            ),
+                                          );
+                                          Navigator.of(context)
+                                              .pushReplacementNamed("/profile",
+                                                  arguments: UserArguments(
+                                                      response["is_lurah"],
+                                                      response["is_nakes"],
+                                                      response["username"],
+                                                      response["email"],
+                                                      response["password"],
+                                                      true));
+                                        }
+                                        // ScaffoldMessenger.of(context)
+                                        //     .showSnackBar(
+                                        //   const SnackBar(
+                                        //     content: Text(
+                                        //         '(Login Berhasil) Selamat Datang Kembali!'),
+                                        //     backgroundColor: Colors.teal,
+                                        //     behavior: SnackBarBehavior.floating,
+                                        //   ),
+                                        // );
+                                        // Navigator.pushNamed(context, '/main');
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
@@ -263,13 +299,12 @@ class _LoginAppState extends State<LoginApp> {
                                     text: "Create a New One",
                                     style: const TextStyle(
                                         fontFamily: "Poppins",
-                                        color: Colors.indigo,
+                                        color:
+                                            Color.fromARGB(255, 92, 102, 161),
                                         fontWeight: FontWeight.w700),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        print("register");
-                                        launchUrl(Uri.parse(
-                                            "${AppConfig.apiUrl}authentication/register/"));
+                                        Navigator.pushNamed(context, '/signup');
                                       },
                                   )
                                 ]),

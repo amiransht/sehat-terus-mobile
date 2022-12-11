@@ -54,6 +54,7 @@ dependencies:
   countup: ^0.1.4
   group_radio_button: ^1.3.0
   flash: ^2.0.5
+  email_validator: ^2.1.17
 
 
 dev_dependencies:

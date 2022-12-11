@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:sehat_terus/config.dart';
+import 'package:email_validator/email_validator.dart';
 
 class SignUpApp extends StatefulWidget {
   const SignUpApp({Key? key}) : super(key: key);
@@ -19,7 +20,8 @@ class _SignUpAppState extends State<SignUpApp> {
   String username = '';
   String password1 = '';
   String password2 = '';
-  String email = 'changeyouremailhere@example.com';
+  String email = '';
+
   bool isLoading = false;
   String role = 'Lurah';
   final List<String> _roles = ['Nakes', 'Lurah'];
@@ -53,7 +55,7 @@ class _SignUpAppState extends State<SignUpApp> {
                 // child: Container(
                 //   image: Image.asset(
                 //     "assets/5m-5.png",
-                //     height: 60,
+                //     height: 40,
                 //   ),
                 // ),
               ),
@@ -71,7 +73,7 @@ class _SignUpAppState extends State<SignUpApp> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      height: 30,
+                      height: 40,
                     ),
                     const Text(
                       "Hi!",
@@ -99,7 +101,7 @@ class _SignUpAppState extends State<SignUpApp> {
                           children: [
                             Container(
                               width: 260,
-                              height: 60,
+                              height: 40,
                               child: TextFormField(
                                 decoration: const InputDecoration(
                                   labelText: 'Username',
@@ -132,7 +134,44 @@ class _SignUpAppState extends State<SignUpApp> {
                             ),
                             Container(
                               width: 260,
-                              height: 60,
+                              height: 40,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Email',
+                                  hintText: 'youremail@example.com',
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                  ),
+                                ),
+                                validator: (String? value) {
+                                  bool isValid =
+                                      EmailValidator.validate(value!);
+                                  if (value == null ||
+                                      value.isEmpty ||
+                                      !isValid) {
+                                    return 'Please enter a valid email (example@example.example)';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (String? value) {
+                                  setState(() {
+                                    email = value!;
+                                  });
+                                },
+                                onSaved: (String? value) {
+                                  setState(() {
+                                    email = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            Container(
+                              width: 260,
+                              height: 40,
                               child: TextFormField(
                                 obscureText: true,
                                 decoration: const InputDecoration(
@@ -170,7 +209,7 @@ class _SignUpAppState extends State<SignUpApp> {
                             ),
                             Container(
                               width: 260,
-                              height: 60,
+                              height: 40,
                               child: TextFormField(
                                 obscureText: true,
                                 decoration: const InputDecoration(
@@ -261,7 +300,7 @@ class _SignUpAppState extends State<SignUpApp> {
                                         isLoading = true;
                                       });
                                       final response = await request.login(
-                                          "http://localhost:8000/authentication/register_flutter/",
+                                          "${AppConfig.apiUrl}authentication/register_flutter/",
                                           {
                                             "username": username,
                                             "password1": password1,
@@ -277,7 +316,7 @@ class _SignUpAppState extends State<SignUpApp> {
                                             .showSnackBar(
                                           const SnackBar(
                                             content: Text(
-                                                '(Registrasi Berhasil) Selamat Datang !'),
+                                                '(Registrasi Berhasil) Silahkan login untuk melanutkan'),
                                             backgroundColor: Colors.teal,
                                             behavior: SnackBarBehavior.floating,
                                           ),
@@ -298,7 +337,7 @@ class _SignUpAppState extends State<SignUpApp> {
                                           //     // ),
                                           //   ),
                                         );
-                                        Navigator.pushNamed(context, '/main');
+                                        Navigator.pushNamed(context, '/login');
                                       } else {
                                         showSnackBarError(
                                             context, response['message']);
