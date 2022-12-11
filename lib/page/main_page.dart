@@ -4,6 +4,7 @@ import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/home_page.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
+import 'package:sehat_terus/page/login_pageui.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -19,12 +20,7 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     DataPage(),
     BlogPage(),
-    Center(
-      child: Text(
-        'Post',
-        // style: optionStyle,
-      ),
-    ),
+    LoginApp()
   ];
 
   final List<BottomNavigationBarItem> _tabsButton =
