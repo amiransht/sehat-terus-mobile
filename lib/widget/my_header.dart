@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehat_terus/core/colors.dart';
-import 'package:sehat_terus/page/faq_page.dart';
+import 'package:sehat_terus/page/faq%20and%20blog/faq_page.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 
 class MyHeader extends StatefulWidget {

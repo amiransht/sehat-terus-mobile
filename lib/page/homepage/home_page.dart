@@ -4,11 +4,11 @@ import 'package:getwidget/getwidget.dart';
 
 import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/core/colors.dart';
-import 'package:sehat_terus/models/article_model.dart';
-import 'package:sehat_terus/page/about.dart';
-import 'package:sehat_terus/page/article_page.dart';
-import 'package:sehat_terus/page/data_statistik.dart';
-import 'package:sehat_terus/page/faq_page.dart';
+import 'package:sehat_terus/models/artikel.dart';
+import 'package:sehat_terus/page/about/about.dart';
+import 'package:sehat_terus/page/homepage/article_page.dart';
+import 'package:sehat_terus/page/data%20statistik/data_statistik.dart';
+import 'package:sehat_terus/page/faq%20and%20blog/faq_page.dart';
 import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/widget/section5m.dart';
 import 'package:sehat_terus/widget/image_container.dart';

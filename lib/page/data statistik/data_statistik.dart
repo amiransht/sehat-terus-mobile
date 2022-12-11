@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:sehat_terus/data_source/api_dataCovidIndo.dart';
+import 'package:sehat_terus/data_source/api_pasien.dart';
 import 'package:sehat_terus/widget/custom_form_field.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/widget/my_header.dart';
 import 'package:sehat_terus/widget/counter.dart';
 import 'package:sehat_terus/models/data_covid.dart';
-import 'package:sehat_terus/models/data_covid_lokal.dart';
+import 'package:sehat_terus/models/pasien.dart';
 import 'package:sehat_terus/models/user_profile.dart';
+import 'package:sehat_terus/models/data_covid.dart';
+import 'package:sehat_terus/models/pasien.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -18,8 +22,8 @@ class DataPage extends StatefulWidget {
 }
 
 class _DataPageState extends State<DataPage> {
-  late Future<List<ListData>> _futureDataCovid;
-  late Future<List<DataLokal>> _futureDataLokal;
+  late Future<List<DataCovidIndo>> _futureDataCovid;
+  late Future<List<Pasien>> _futureDataLokal;
   CustomFormField customFormField = CustomFormField();
   GlobalKey<FormState> key = GlobalKey<FormState>();
   String _namaProv = "DKI JAKARTA";
@@ -33,46 +37,9 @@ class _DataPageState extends State<DataPage> {
 
   @override
   void initState() {
-    Future<List<ListData>> fetchDataCovid() async {
-      var url = Uri.parse('https://data.covid19.go.id/public/api/prov.json');
-      var response = await http.get(
-        url,
-      );
-      var data = jsonDecode(utf8.decode(response.bodyBytes));
-      
-
-      List<ListData> listDataCovid = [];
-      print(data['list_data']);
-
-      for (var d in data['list_data']) {
-        if (d != null) {
-
-          listDataCovid.add(ListData.fromJson(d));
-        }
-      }
-      return listDataCovid;
-    }
-
-    Future<List<DataLokal>> fetchDataLokal() async {
-      var url = Uri.parse('https://sehat-terus.up.railway.app/json');
-      var response = await http.get(
-        url,
-      );
-      var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-      List<DataLokal> listDataLokal = [];
-      for (var d in data) {
-        if (d != null) {
-          listDataLokal.add(DataLokal.fromJson(d));
-        }
-      }
-
-      return listDataLokal;
-    }
-
     super.initState();
     _futureDataCovid = fetchDataCovid();
-    _futureDataLokal = fetchDataLokal();
+    _futureDataLokal = fetchDataPasien();
   }
 
   void getData(AsyncSnapshot snapshot) {

@@ -1,5 +1,5 @@
-class DataBlog {
-  DataBlog({
+class Blog {
+  Blog({
     required this.title,
     required this.content,
   });
@@ -7,7 +7,7 @@ class DataBlog {
   String title = "";
   String content = "";
 
-  factory DataBlog.fromJson(Map<String, dynamic> json) => DataBlog(
+  factory Blog.fromJson(Map<String, dynamic> json) => Blog(
         title : json["fields"]["title"],
         content : json["fields"]["content"],
       );

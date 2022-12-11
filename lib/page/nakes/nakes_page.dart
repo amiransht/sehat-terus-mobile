@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:sehat_terus/models/data_covid_lokal.dart';
-import 'package:sehat_terus/models/data_pasien_lokal.dart';
+import 'package:sehat_terus/data_source/api_pasien.dart';
+import 'package:sehat_terus/models/pasien.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class NakesPage extends StatefulWidget {
-  const NakesPage({Key? key}) : super(key: key);
+  final User? user;
+  const NakesPage({Key? key, this.user}) : super(key: key);
 
   @override
   State<NakesPage> createState() => _NakesPageState();
@@ -15,52 +17,11 @@ class NakesPage extends StatefulWidget {
 
 class _NakesPageState extends State<NakesPage> {
   bool _isCovidFuture = false;
-
-  Future<List<DataLokal>> fetchDataLokal() async {
-    var url = Uri.parse('https://sehat-terus.up.railway.app/json');
-    var response = await http.get(
-      url,
-    );
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-    List<DataLokal> listDataLokal = [];
-    for (var d in data) {
-      // print(d);
-      if (d != null) {
-        listDataLokal.add(DataLokal.fromJson(d));
-      }
-    }
-
-    return listDataLokal;
-  }
-
-  Future<bool> updateIsCovid(bool isCovidNew, int id) async {
-    var response = await http.post(
-        Uri.parse(
-            "https://sehat-terus.up.railway.app/nakes-page/pasien/update/${id}"),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<bool, bool>{
-          // TODO: INI GIMANA BODYNYAAA
-          // fields[id].isCovid : isCovidNew,
-        }));
-
-    _isCovidFuture = isCovidNew;
-
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return _isCovidFuture;
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to update.');
-    }
-  }
-
   @override
+
   Widget build(BuildContext context) {
+    print("nakespage: nakes? ");
+    print(widget.user?.isNakes);
     return Scaffold(
         appBar: AppBar(
           title: const Text('Nakes Page'),
@@ -77,7 +38,7 @@ class _NakesPageState extends State<NakesPage> {
         ),
         // extendBodyBehindAppBar: true,
         body: FutureBuilder(
-            future: fetchDataLokal(),
+            future: fetchDataPasien(),
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return const CircularProgressIndicator();

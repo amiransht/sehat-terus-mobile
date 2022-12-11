@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:sehat_terus/api/api_getBlog.dart';
+import 'package:sehat_terus/data_source/api_blog.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:sehat_terus/page/blog_page.dart';
+import 'package:sehat_terus/page/faq%20and%20blog/blog_page.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 import 'package:sehat_terus/page/main_page.dart';
 
-import '../core/colors.dart';
+import '../../core/colors.dart';
 
 class BlogFormPage extends StatefulWidget {
   final User? user;

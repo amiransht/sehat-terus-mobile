@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:sehat_terus/page/blog_page.dart';
+import 'package:sehat_terus/page/faq%20and%20blog/blog_page.dart';
 import 'package:sehat_terus/page/main_page.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/widget/image_container.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 
-import '../models/data_blog.dart';
+import '../../models/blog.dart';
 // import '../widgets/custom_tag.dart';
 
 class DetailBlogPage extends StatelessWidget {
@@ -17,7 +17,7 @@ class DetailBlogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     print("detailblog: nakes? ");
     print(user?.isNakes);
-    final blog = ModalRoute.of(context)!.settings.arguments as DataBlog;
+    final blog = ModalRoute.of(context)!.settings.arguments as Blog;
     return ImageContainer(
         width: double.infinity,
         image: "assets/news2.jpeg",
@@ -65,7 +65,7 @@ class _NewsBody extends StatelessWidget {
     required this.blog,
   }) : super(key: key);
 
-  final DataBlog blog;
+  final Blog blog;
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,7 @@ class _NewsHeadline extends StatelessWidget {
     required this.blog,
   }) : super(key: key);
 
-  final DataBlog blog;
+  final Blog blog;
 
   @override
   Widget build(BuildContext context) {

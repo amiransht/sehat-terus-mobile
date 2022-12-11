@@ -5,7 +5,7 @@ import 'package:sehat_terus/widget/image_container.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 import 'package:sehat_terus/page/main_page.dart';
 
-import '../models/article_model.dart';
+import '../../models/artikel.dart';
 // import '../widgets/custom_tag.dart';
 
 class ArticlePage extends StatelessWidget {

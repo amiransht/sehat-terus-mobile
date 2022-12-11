@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/page/main_page.dart';
-import 'package:sehat_terus/page/formBlog_page.dart';
+import 'package:sehat_terus/page/faq%20and%20blog/formBlog_page.dart';
 import 'package:sehat_terus/widget/title.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 

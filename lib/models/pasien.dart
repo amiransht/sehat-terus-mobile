@@ -1,11 +1,11 @@
-class DataLokal {
+class Pasien {
   String? model;
   int? pk;
   Fields? fields;
 
-  DataLokal({this.model, this.pk, this.fields});
+  Pasien({this.model, this.pk, this.fields});
 
-  DataLokal.fromJson(Map<String, dynamic> json) {
+  Pasien.fromJson(Map<String, dynamic> json) {
     model = json['model'];
     pk = json['pk'];
     fields =

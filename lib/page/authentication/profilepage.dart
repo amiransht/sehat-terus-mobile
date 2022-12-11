@@ -6,7 +6,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:sehat_terus/page/main_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../config.dart';
+import '../../config.dart';
 
 class Profile extends StatefulWidget {
   final User? user;

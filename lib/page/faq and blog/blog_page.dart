@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sehat_terus/api/api_getBlog.dart';
+import 'package:sehat_terus/data_source/api_blog.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/appbar.dart';
-import 'package:sehat_terus/models/data_blog.dart';
+import 'package:sehat_terus/models/blog.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:sehat_terus/page/detail_blog.dart';
+import 'package:sehat_terus/page/faq%20and%20blog/detail_blog.dart';
 import 'package:getwidget/getwidget.dart';
 
 import 'package:pbp_django_auth/pbp_django_auth.dart';

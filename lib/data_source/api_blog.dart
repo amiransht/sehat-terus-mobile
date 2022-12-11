@@ -1,19 +1,19 @@
-import 'package:sehat_terus/models/data_blog.dart';
+import 'package:sehat_terus/models/blog.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
-Future<List<DataBlog>> fetchBlog(request) async {
+Future<List<Blog>> fetchBlog(request) async {
   var url = 'https://sehat-terus.up.railway.app/faq-page/getblog';
   var response = await request.get(url);
 
   var data = response;
 
   // melakukan konversi data json menjadi object ToDo
-  List<DataBlog> dataBlog = [];
+  List<Blog> dataBlog = [];
 
   for (var d in data) {
     if (d != null) {
       // print(d);
-      dataBlog.add(DataBlog.fromJson(d));
+      dataBlog.add(Blog.fromJson(d));
     }
   }
 

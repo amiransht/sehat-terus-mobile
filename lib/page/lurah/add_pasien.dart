@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:sehat_terus/page/show_pasien.dart';
+import 'package:sehat_terus/page/lurah/show_pasien.dart';
 
 class PasienForm extends StatefulWidget {
   const PasienForm({super.key});
