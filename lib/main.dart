@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/page/about.dart';
+import 'package:sehat_terus/page/add_pasien.dart';
 import 'package:sehat_terus/page/blog_page.dart';
 import 'package:sehat_terus/page/detail_blog.dart';
 import 'package:sehat_terus/page/data_statistik.dart';
@@ -14,6 +15,7 @@ import 'package:sehat_terus/page/onboarding.dart';
 import 'package:sehat_terus/page/article_page.dart';
 import 'package:sehat_terus/page/faq_page.dart';
 import 'package:sehat_terus/page/profilepage.dart';
+import 'package:sehat_terus/page/show_pasien.dart';
 import 'package:sehat_terus/page/signup_page.dart';
 
 void main() {
@@ -36,7 +38,7 @@ class App extends StatelessWidget {
           fontFamily: 'Poppins',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/main',
+        initialRoute: '/addpasien',
         routes: {
           '/': (context) => OnboardingScreen(),
           '/main': (context) => MainPage(setPageAtIndex: 0),
@@ -53,6 +55,8 @@ class App extends StatelessWidget {
           '/nakes': (context) => const NakesPage(),
           '/signup': (context) => const SignUpApp(),
           '/profile': (context) => const Profile(),
+          '/addpasien': (context) => const PasienForm(),
+          '/showpasien': (context) => const ShowPasienPage(),
         },
       ),
     );
