@@ -107,8 +107,10 @@ class _NakesPageState extends State<NakesPage> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Text(
                                           "Umur: ${snapshot.data![index].fields.umur}",
@@ -127,25 +129,27 @@ class _NakesPageState extends State<NakesPage> {
                                       ],
                                     ),
                                     Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "Gejala: ${snapshot.data![index].fields.gejala}",
-                                            style: const TextStyle(
-                                              fontSize: 13.0,
-                                              fontWeight: FontWeight.normal,
-                                            ),
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Gejala: ${snapshot.data![index].fields.gejala}",
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            fontWeight: FontWeight.normal,
                                           ),
-                                          Text(
-                                            "Alamat: ${snapshot.data![index].fields.alamat}",
-                                            style: const TextStyle(
-                                              fontSize: 13.0,
-                                              fontWeight: FontWeight.normal,
-                                            ),
+                                        ),
+                                        Text(
+                                          "Alamat: ${snapshot.data![index].fields.alamat}",
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            fontWeight: FontWeight.normal,
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
 
@@ -162,31 +166,13 @@ class _NakesPageState extends State<NakesPage> {
                                   onPressed: () async {
                                     print("update data");
                                     int id = snapshot.data![index].pk;
-                                    // print(
-                                    //     "https://sehat-terus.up.railway.app/nakes-page/pasien/update/${id}");
-
-                                    // var response = await request.postJson(
-                                    //     "https://sehat-terus.up.railway.app/nakes-page/pasien/update/${id}",
-                                    //     json.encode({}));
-                                    // print(response);
-
-                                    print(updateIsCovid(id));
                                     setState(() {
-                                      // _isCovidFuture = snapshot
-                                      //         .data![index].fields.isCovid =
-                                      //     updateIsCovid(
-                                      //             !snapshot.data![index]
-                                      //                 .fields.isCovid,
-                                      //             snapshot.data![index].pk)
-                                      //         as bool;
-                                      // print(snapshot.data![index].fields);
-                                      // var response = updateIsCovid(
-                                      //     !snapshot
-                                      //         .data![index].fields.isCovid,
-                                      //     snapshot.data![index].pk,
-                                      //     snapshot.data![index].fields);
-                                      // print(response);
+                                      snapshot.data![index].fields.isCovid =
+                                          !snapshot.data![index].fields.isCovid;
                                     });
+                                    updateIsCovid(
+                                        !snapshot.data![index].fields.isCovid,
+                                        snapshot.data![index].pk);
                                   },
                                   child: Text("Update Pasien"),
                                   size: GFSize.SMALL,
