@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/models/user_role.dart';
+import 'package:sehat_terus/page/authentication/coba.dart';
 import 'package:sehat_terus/page/faq%20and%20blog/blog_page.dart';
 import 'package:sehat_terus/page/faq%20and%20blog/faq_page.dart';
 import 'package:sehat_terus/page/homepage/home_page.dart';
@@ -69,7 +70,8 @@ class _MainPageState extends State<MainPage> {
         HomePage(user: userLoggedIn),
         DataPage(user: userLoggedIn),
         BlogPage(user: userLoggedIn),
-        Profile(user: userLoggedIn),
+        // ProfileScreen()
+        ProfileScreen(user: userLoggedIn)
       ].elementAt(_selectedIndex),
       bottomNavigationBar: Container(
           height: 69.0,

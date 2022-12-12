@@ -56,127 +56,49 @@ class _ProfileState extends State<Profile> {
           ],
         ),
       );
-    }
-
-    // } else {
-    //   var args = widget.user;
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: const Text('Informasi Login'),
-    //   ),
-    //   body: Center(
-    //     child: Form(
-    //       key: _formKey,
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         children: [
-    //           Text('Username: ${args!.username}'),
-    //           Text('Email: ${args!.email}'),
-    //           Text('Password: ${args!.password}'),
-    //           Text('Role : ${args!.isLurah ? 'Lurah' : 'Nakes'}'),
-    //           Text('Nama Depan: ${args!.firstName}'),
-    //           Text('Nama Belakang: ${args!.lastName}'),
-    //           Text('Provinsi: ${args!.province}'),
-    //           Text('Kota: ${args!.city}'),
-    //           Text('Kecamatan: ${args!.district}'),
-    //           Text('Jenis Kelamin: ${args!.gender}'),
-    //           Text('Nomor Telepon: ${args!.phone}'),
-    //           // Text('Tanggal Lahir: ${args.birthDate}'),
-    //           Text('Bio: ${args!.bio}'),
-    //           Text('Anda bisa mengatur profil anda pada website kami :'),
-    //           TextButton(
-    //             child: const Text('Klik Disini'),
-    //             onPressed: () {
-    //               launchUrl(Uri.parse(
-    //                   "${AppConfig.apiUrl}authentication/setting/"));
-    //             },
-    //           ),
-    //           ElevatedButton(
-    //             onPressed: () async {
-    //               Navigator.push(
-    //                 context,
-    //                 MaterialPageRoute(
-    //                   builder: (context) => MainPage(
-    //                     userLoggedIn: widget.user,
-    //                     setPageAtIndex: 0,
-    //                   ),
-    //                 ),
-    //               );
-    //             },
-    //             child: const Text('Kembali ke halaman utama'),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
-    //   }
-    // }
-  }
-}
-
-class _ProfileContainer extends StatelessWidget {
-  final User? user;
-
-  const _ProfileContainer({
-    this.user,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-          Align(
-              alignment: Alignment.center,
-              child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Icon(
-                    Icons.person_outline_outlined,
-                    size: 35,
-                  ))),
-          Align(
-            alignment: Alignment.center,
-            child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  user!.username,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
-                )),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  user!.email,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
-                )),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  user!.firstName,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
-                )),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  user!.lastName,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
-                )),
+    } else {
+      var args = widget.user;
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Informasi Login'),
+        ),
+        body: Center(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Username: ${args!.username}'),
+                Text('Email: ${args.email}'),
+                Text('Password: ${args.password}'),
+                Text('Role : ${args.isLurah ? 'Lurah' : 'Nakes'}'),
+                Text('Nama Depan: ${args.firstName}'),
+                Text('Nama Belakang: ${args.lastName}'),
+                Text('Provinsi: ${args.province}'),
+                Text('Kota: ${args.city}'),
+                Text('Kecamatan: ${args.district}'),
+                Text('Jenis Kelamin: ${args.gender}'),
+                Text('Nomor Telepon: ${args.phone}'),
+                // Text('Tanggal Lahir: ${args.birthDate}'),
+                Text('Bio: ${args.bio}'),
+                Text('Anda bisa mengatur profil anda pada website kami :'),
+                TextButton(
+                  child: const Text('Klik Disini'),
+                  onPressed: () {
+                    launchUrl(Uri.parse(
+                        "${AppConfig.apiUrl}authentication/setting/"));
+                  },
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await request.logout(
+                        "${AppConfig.apiUrl}authentication/logout_flutter/");
+                    Navigator.pushReplacementNamed(context, '/main');
+                  },
+                  child: const Text('Log Out'),
+                )
+              ],
+            ),
           ),
         ]));
   }
