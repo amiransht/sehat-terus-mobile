@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -29,32 +30,30 @@ class _ProfileState extends State<Profile> {
     // final args = ModalRoute.of(context)!.settings.arguments as UserArguments;
     // var args = null;
 
-    if (!request.loggedIn) {
+    if (request != null && request.loggedIn) {
       return Scaffold(
-        appBar: AppBar(
-          title: const Text('Informasi Login'),
-        ),
-        body: Center(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    Navigator.pushReplacementNamed(context, '/login');
-                  },
-                  child: const Text('Login terlebih dahulu'),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    Navigator.pushReplacementNamed(context, '/main');
-                  },
-                  child: const Text('Kembali ke halaman utama'),
-                ),
-              ],
+          body: _ProfileContainer(
+        user: widget.user,
+      ));
+    } else {
+      return Form(
+        key: _formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () async {
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              child: const Text('Login terlebih dahulu'),
             ),
-          ),
+            ElevatedButton(
+              onPressed: () async {
+                Navigator.pushReplacementNamed(context, '/main');
+              },
+              child: const Text('Kembali ke halaman utama'),
+            ),
+          ],
         ),
       );
     } else {
@@ -70,18 +69,18 @@ class _ProfileState extends State<Profile> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Username: ${args!.username}'),
-                Text('Email: ${args!.email}'),
-                Text('Password: ${args!.password}'),
-                Text('Role : ${args!.isLurah ? 'Lurah' : 'Nakes'}'),
-                Text('Nama Depan: ${args!.firstName}'),
-                Text('Nama Belakang: ${args!.lastName}'),
-                Text('Provinsi: ${args!.province}'),
-                Text('Kota: ${args!.city}'),
-                Text('Kecamatan: ${args!.district}'),
-                Text('Jenis Kelamin: ${args!.gender}'),
-                Text('Nomor Telepon: ${args!.phone}'),
+                Text('Email: ${args.email}'),
+                Text('Password: ${args.password}'),
+                Text('Role : ${args.isLurah ? 'Lurah' : 'Nakes'}'),
+                Text('Nama Depan: ${args.firstName}'),
+                Text('Nama Belakang: ${args.lastName}'),
+                Text('Provinsi: ${args.province}'),
+                Text('Kota: ${args.city}'),
+                Text('Kecamatan: ${args.district}'),
+                Text('Jenis Kelamin: ${args.gender}'),
+                Text('Nomor Telepon: ${args.phone}'),
                 // Text('Tanggal Lahir: ${args.birthDate}'),
-                Text('Bio: ${args!.bio}'),
+                Text('Bio: ${args.bio}'),
                 Text('Anda bisa mengatur profil anda pada website kami :'),
                 TextButton(
                   child: const Text('Klik Disini'),
@@ -92,21 +91,15 @@ class _ProfileState extends State<Profile> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainPage(userLoggedIn: widget.user, setPageAtIndex: 0,),
-                      ),
-                    );
-
+                    await request.logout(
+                        "${AppConfig.apiUrl}authentication/logout_flutter/");
+                    Navigator.pushReplacementNamed(context, '/main');
                   },
-                  child: const Text('Kembali ke halaman utama'),
-                ),
+                  child: const Text('Log Out'),
+                )
               ],
             ),
           ),
-        ),
-      );
-    }
+        ]));
   }
 }
