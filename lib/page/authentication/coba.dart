@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:sehat_terus/page/authentication/login_pageui.dart';
 import 'package:sehat_terus/page/main_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config.dart';
@@ -25,33 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final request = context.watch<CookieRequest>();
 
     if (!request.loggedIn) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Informasi Login'),
-        ),
-        body: Center(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    Navigator.pushReplacementNamed(context, '/login');
-                  },
-                  child: const Text('Login terlebih dahulu'),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    Navigator.pushReplacementNamed(context, '/main');
-                  },
-                  child: const Text('Kembali ke halaman utama'),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
+      return LoginApp();
     } else {
       var args = widget.user;
       double width = MediaQuery.of(context).size.width;
