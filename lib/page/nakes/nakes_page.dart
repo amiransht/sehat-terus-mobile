@@ -18,7 +18,6 @@ class NakesPage extends StatefulWidget {
 class _NakesPageState extends State<NakesPage> {
   bool _isCovidFuture = false;
   @override
-
   Widget build(BuildContext context) {
     print("nakespage: nakes? ");
     print(widget.user?.isNakes);
@@ -136,14 +135,13 @@ class _NakesPageState extends State<NakesPage> {
                                 ElevatedButton(
                                     onPressed: () {
                                       setState(() {
-                                        _isCovidFuture = snapshot
-                                                .data![index].fields.isCovid =
-                                            updateIsCovid(
-                                                    !snapshot.data![index]
-                                                        .fields.isCovid,
-                                                    snapshot.data![index].pk)
-                                                as bool;
+                                        snapshot.data![index].fields.isCovid =
+                                            !snapshot
+                                                .data![index].fields.isCovid;
                                       });
+                                      updateIsCovid(
+                                          !snapshot.data![index].fields.isCovid,
+                                          snapshot.data![index].pk);
                                     },
                                     child: Text("Update Pasien")),
                               ],
