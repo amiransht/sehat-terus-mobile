@@ -28,7 +28,7 @@ class FloatingButton extends StatelessWidget {
               ),
             );
           },
-          child:Image.asset("assets/logoH.png"));
+          child:Image.asset("assets/logoh.png"));
     } else if (user!.isLoggedIn && user!.isNakes) {
       return FloatingActionButton(
           backgroundColor: BaseColors.green,
@@ -42,7 +42,7 @@ class FloatingButton extends StatelessWidget {
               ),
             );
           },
-          child: Image(image: AssetImage("assets/logoH.png")));
+          child: Image(image: AssetImage("assets/logoh.png")));
     } else {
       return FloatingActionButton(
           backgroundColor: Colors.transparent,
