@@ -38,7 +38,7 @@ class App extends StatelessWidget {
           fontFamily: 'Poppins',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/showpasien',
+        initialRoute: '/profil',
         routes: {
           '/': (context) => OnboardingScreen(),
           '/main': (context) => MainPage(setPageAtIndex: 0),

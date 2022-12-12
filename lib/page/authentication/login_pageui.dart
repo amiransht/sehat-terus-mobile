@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/src/material/snack_bar.dart';
 import 'package:sehat_terus/config.dart';
 import 'package:sehat_terus/models/user_profile.dart';
+import 'package:sehat_terus/core/colors.dart';
 
 class LoginApp extends StatefulWidget {
   const LoginApp({Key? key}) : super(key: key);
@@ -33,14 +34,15 @@ class _LoginAppState extends State<LoginApp> {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+               gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.1, 0.4, 0.9],
                   colors: [
-                Color.fromARGB(255, 106, 181, 224),
-                Color.fromARGB(255, 128, 180, 228),
-                Colors.blue,
-              ])),
+                    Color.fromARGB(255, 210, 241, 246),
+                    Color.fromARGB(255, 182, 224, 230),
+                    BaseColors.green,
+                  ])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -61,8 +63,7 @@ class _LoginAppState extends State<LoginApp> {
                 height: 0,
               ),
               Container(
-                width: 325,
-                height: 470,
+                margin: EdgeInsets.all(60),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -78,7 +79,7 @@ class _LoginAppState extends State<LoginApp> {
                       style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 137, 197, 247)),
+                          color: BaseColors.green),
                     ),
                     const SizedBox(
                       height: 10,
@@ -175,14 +176,7 @@ class _LoginAppState extends State<LoginApp> {
                                 decoration: const BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(60)),
-                                    gradient: LinearGradient(
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.centerRight,
-                                        colors: [
-                                          Color.fromARGB(255, 123, 175, 199),
-                                          Color.fromARGB(255, 97, 145, 199),
-                                          Color.fromARGB(255, 98, 182, 221),
-                                        ])),
+                                    color: BaseColors.green),
                                 child: TextButton(
                                   onPressed: () async {
                                     FocusScopeNode currentFocus =
@@ -299,7 +293,7 @@ class _LoginAppState extends State<LoginApp> {
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
-                                        color: Color.fromARGB(255, 14, 2, 48)),
+                                        color: BaseColors.white),
                                   ),
                                 ),
                               ),
@@ -318,7 +312,7 @@ class _LoginAppState extends State<LoginApp> {
                                     style: const TextStyle(
                                         fontFamily: "Poppins",
                                         color:
-                                            Color.fromARGB(255, 92, 102, 161),
+                                            Color.fromARGB(255, 156, 224, 235),
                                         fontWeight: FontWeight.w700),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {

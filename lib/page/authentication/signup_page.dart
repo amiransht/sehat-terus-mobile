@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:sehat_terus/config.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:sehat_terus/core/colors.dart';
 
 class SignUpApp extends StatefulWidget {
   const SignUpApp({Key? key}) : super(key: key);
@@ -34,12 +35,17 @@ class _SignUpAppState extends State<SignUpApp> {
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
               gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [
+                0.1,
+                0.4,
+                0.9
+              ],
                   colors: [
-                Color.fromARGB(255, 106, 181, 224),
-                Color.fromARGB(255, 128, 180, 228),
-                Colors.blue,
+                Color.fromARGB(255, 210, 241, 246),
+                Color.fromARGB(255, 182, 224, 230),
+                BaseColors.green,
               ])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +53,7 @@ class _SignUpAppState extends State<SignUpApp> {
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
                 width: 300,
                 // child: Container(
@@ -61,8 +67,7 @@ class _SignUpAppState extends State<SignUpApp> {
                 height: 0,
               ),
               Container(
-                width: 325,
-                height: 470,
+                margin: EdgeInsets.all(60),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -78,7 +83,7 @@ class _SignUpAppState extends State<SignUpApp> {
                       style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 137, 197, 247)),
+                          color: BaseColors.green),
                     ),
                     const SizedBox(
                       height: 10,
@@ -96,11 +101,14 @@ class _SignUpAppState extends State<SignUpApp> {
                     Form(
                         key: _formKey,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              width: 260,
+                              margin: EdgeInsets.symmetric(horizontal: 60),
                               height: 40,
                               child: TextFormField(
+                                scrollPadding: EdgeInsets.all(0),
                                 decoration: const InputDecoration(
                                   labelText: 'Username',
                                   hintText: 'Enter your username',
@@ -131,7 +139,7 @@ class _SignUpAppState extends State<SignUpApp> {
                               height: 10.0,
                             ),
                             Container(
-                              width: 260,
+                              margin: EdgeInsets.symmetric(horizontal: 60),
                               height: 40,
                               child: TextFormField(
                                 decoration: const InputDecoration(
@@ -168,7 +176,7 @@ class _SignUpAppState extends State<SignUpApp> {
                               height: 10.0,
                             ),
                             Container(
-                              width: 260,
+                              margin: EdgeInsets.symmetric(horizontal: 60),
                               height: 40,
                               child: TextFormField(
                                 obscureText: true,
@@ -206,7 +214,7 @@ class _SignUpAppState extends State<SignUpApp> {
                               height: 10.0,
                             ),
                             Container(
-                              width: 260,
+                              margin: EdgeInsets.symmetric(horizontal: 60),
                               height: 40,
                               child: TextFormField(
                                 obscureText: true,
@@ -253,20 +261,26 @@ class _SignUpAppState extends State<SignUpApp> {
                             const SizedBox(
                               height: 5,
                             ),
-                            RadioGroup<String>.builder(
-                              direction: Axis.horizontal,
-                              horizontalAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                              groupValue: role,
-                              onChanged: (value) => setState(() {
-                                role = value!;
-                              }),
-                              items: _roles,
-                              itemBuilder: (item) => RadioButtonBuilder(
-                                item,
-                                textPosition: RadioButtonTextPosition.right,
+                            Container(
+                              margin: EdgeInsets.symmetric(horizontal: 60),
+                              height: 40,
+                              alignment: Alignment.center,
+                              // mainAxisAlignment: MainAxisAlignment.center,
+                              child: RadioGroup<String>.builder(
+                                direction: Axis.horizontal,
+                                horizontalAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                groupValue: role,
+                                onChanged: (value) => setState(() {
+                                  role = value!;
+                                }),
+                                items: _roles,
+                                itemBuilder: (item) => RadioButtonBuilder(
+                                  item,
+                                  textPosition: RadioButtonTextPosition.right,
+                                ),
+                                textStyle: const TextStyle(fontSize: 12),
                               ),
-                              textStyle: const TextStyle(fontSize: 12),
                             ),
                             const SizedBox(
                               height: 20.0,
@@ -278,14 +292,7 @@ class _SignUpAppState extends State<SignUpApp> {
                                 decoration: const BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(60)),
-                                    gradient: LinearGradient(
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.centerRight,
-                                        colors: [
-                                          Color.fromARGB(255, 123, 175, 199),
-                                          Color.fromARGB(255, 97, 145, 199),
-                                          Color.fromARGB(255, 98, 182, 221),
-                                        ])),
+                                    color: BaseColors.green,),
                                 child: TextButton(
                                   onPressed: () async {
                                     FocusScopeNode currentFocus =
@@ -315,26 +322,10 @@ class _SignUpAppState extends State<SignUpApp> {
                                             .showSnackBar(
                                           const SnackBar(
                                             content: Text(
-                                                '(Registrasi Berhasil) Silahkan login untuk melanutkan'),
+                                                'Registrasi Berhasil! Silahkan login untuk melanjutkan'),
                                             backgroundColor: Colors.teal,
                                             behavior: SnackBarBehavior.floating,
                                           ),
-                                          // ScaffoldMessenger.of(context)
-                                          //     .showSnackBar(
-                                          //   const SnackBar(
-                                          //     content: Text(
-                                          //         '(Registrasi Berhasil) Selamat Datang !'),
-                                          //     backgroundColor: Colors.teal,
-                                          //     behavior: SnackBarBehavior.floating,
-                                          //     // action: SnackBarAction(
-                                          //     //   label: 'Dismiss',
-                                          //     //   disabledTextColor: Colors.white,
-                                          //     //   textColor: Colors.yellow,
-                                          //     //   onPressed: () {
-                                          //     //     //Do whatever you want
-                                          //     //   },
-                                          //     // ),
-                                          //   ),
                                         );
                                         Navigator.pushNamed(context, '/login');
                                       } else {
@@ -348,7 +339,7 @@ class _SignUpAppState extends State<SignUpApp> {
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
-                                        color: Color.fromARGB(255, 14, 2, 48)),
+                                        color: BaseColors.white),
                                   ),
                                 ),
                               ),
@@ -381,23 +372,9 @@ class _SignUpAppState extends State<SignUpApp> {
                           ],
                         )),
                     const SizedBox(
-                      height: 12,
+                      height: 25,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 10, 30, 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          // TextButton(
-                          //   onPressed: click,
-                          //   child: const Text(
-                          //     "Forget Password",
-                          //     style: TextStyle(color: Colors.deepOrange),
-                          //   ),
-                          // )
-                        ],
-                      ),
-                    ),
+                   
                   ],
                 ),
               )
@@ -412,7 +389,7 @@ class _SignUpAppState extends State<SignUpApp> {
 void showSnackBarError(BuildContext context, String teks) {
   final snackBar = SnackBar(
     content: Text(teks),
-    backgroundColor: Color.fromARGB(255, 150, 0, 0),
+    backgroundColor: const Color.fromARGB(255, 150, 0, 0),
     behavior: SnackBarBehavior.floating,
     action: SnackBarAction(
       label: 'Dismiss',

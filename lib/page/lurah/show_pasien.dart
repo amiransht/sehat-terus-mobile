@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 import 'dart:convert' as convert;
+import 'package:sehat_terus/core/colors.dart';
 
 import 'package:sehat_terus/data_source/api_pasien.dart';
 
@@ -23,31 +25,26 @@ class _LurahPageState extends State<LurahPage> {
     print(widget.user?.isNakes);
     final request = context.watch<CookieRequest>();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Data Pasien',
-          style: TextStyle(),
-        ),
-      ),
+      appBar: buildAppBar(context, "Lurah Page", widget.user),
+
       body: FutureBuilder(
           future: fetchDataPasien(),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
-              return const Center(
-                  child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                          Color.fromRGBO(254, 185, 0, 100))));
+              return Container(
+                    alignment: Alignment.center,
+                    child: const CircularProgressIndicator(
+                    color: BaseColors.green,
+                    ));
             } else {
               if (!snapshot.hasData) {
-                return Column(
-                  children: const [
-                    Text(
-                      "There is no data yet :(",
+                 return Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Tidak ada pasien",
                       style: TextStyle(color: Color(0xff59A5D8), fontSize: 20),
                     ),
-                    SizedBox(height: 8),
-                  ],
-                );
+                  );
               } else {
                 return Container(
                   child: ListView.builder(
@@ -56,64 +53,112 @@ class _LurahPageState extends State<LurahPage> {
                       //     SliverGridDelegateWithFixedCrossAxisCount(
                       //         crossAxisCount: 2),
                       itemBuilder: (_, index) => Container(
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 6),
-                            padding: const EdgeInsets.all(10.0),
+                             margin: const EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 20),
+                            padding: const EdgeInsets.all(20.0),
                             decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(color: buttonColor),
-                                borderRadius: BorderRadius.circular(12.0),
-                                boxShadow: const [
-                                  BoxShadow(
-                                      color: Color.fromARGB(255, 180, 167, 167),
-                                      blurRadius: 1.0)
-                                ]),
-                            child: ListTile(
-                              onTap: () {},
-                              title: Text(
-                                "${snapshot.data![index].fields.nama}",
-                                style: const TextStyle(
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                              subtitle: Column(
-                                children: [
-                                  Text(
-                                    "${snapshot.data![index].fields.umur}",
-                                    style: const TextStyle(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                  Text(
-                                    "${snapshot.data![index].fields.gender}",
-                                    style: const TextStyle(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                  Text(
-                                    "${snapshot.data![index].fields.gejala}",
-                                    style: const TextStyle(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                  Text(
-                                    "${snapshot.data![index].fields.alamat}",
-                                    style: const TextStyle(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                  Text(
-                                    (snapshot.data![index].fields.isCovid ==
-                                            true
-                                        ? 'Positif'
-                                        : 'Negatif'),
-                                    style: const TextStyle(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              color: BaseColors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: BaseColors.grey.withOpacity(0.7),
+                                  blurRadius: 3,
+                                  spreadRadius: 1,
+                                  offset: const Offset(0, 3),
+                                )
+                              ],
                             ),
+                            child: Column(
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.center,
+                                      padding: const EdgeInsets.all(5.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(20)),
+                                        color:
+                                            snapshot.data![index].fields.isCovid ==
+                                                    true
+                                                ? Color(0xFFffe2dd)
+                                                : Color(0xFFdbeddb),
+                                      ),
+                                      child: Text(
+                                          snapshot.data![index].fields.isCovid ==
+                                                  true
+                                              ? 'Positif'
+                                              : 'Negatif',
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                              fontSize: 18.0,
+                                              fontWeight: FontWeight.normal)),
+                                    ),
+                                    SizedBox(
+                                      height: 15,
+                                    ),
+                                    Text(
+                                      "${snapshot.data![index].fields.nama}",
+                                      style: const TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(height: 5),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Umur: ${snapshot.data![index].fields.umur}",
+                                              style: const TextStyle(
+                                                fontSize: 13.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            Text(
+                                              "Gender: ${snapshot.data![index].fields.gender}",
+                                              style: const TextStyle(
+                                                fontSize: 13.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Gejala: ${snapshot.data![index].fields.gejala}",
+                                                style: const TextStyle(
+                                                  fontSize: 13.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                              ),
+                                              Text(
+                                                "Alamat: ${snapshot.data![index].fields.alamat}",
+                                                style: const TextStyle(
+                                                  fontSize: 13.0,
+                                                  fontWeight: FontWeight.normal,
+                                                  
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 10),
+
+                                  ],
+                                ),
+                              ],
+                            ),
+                           
                           )),
                 );
               }
