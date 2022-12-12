@@ -1,4 +1,9 @@
 # Tugas Proyek Akhir Semester
+
+[![development](https://github.com/amiransht/sehat-terus-mobile/actions/workflows/development.yml/badge.svg)](https://github.com/amiransht/sehat-terus-mobile/blob/main/.github/workflows/development.yml)
+[![pre-release](https://github.com/amiransht/sehat-terus-mobile/actions/workflows/pre-release.yml/badge.svg)](https://github.com/amiransht/sehat-terus-mobile/blob/main/.github/workflows/pre-release.yml)
+[![release](https://github.com/amiransht/sehat-terus-mobile/actions/workflows/release.yml/badge.svg)](https://github.com/amiransht/sehat-terus-mobile/blob/main/.github/workflows/release.yml)
+[![Build status](https://build.appcenter.ms/v0.1/apps/1256feb0-8961-4072-bf1b-1bebf1e53756/branches/main/badge)](https://appcenter.ms)
 ## Sehat Terus Mobile Application
 
 Kelompok F03:
