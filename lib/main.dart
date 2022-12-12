@@ -55,7 +55,7 @@ class App extends StatelessWidget {
           '/main/detailblog': (context) => const DetailBlogPage(),
           '/nakes': (context) => const NakesPage(),
           '/signup': (context) => const SignUpApp(),
-          '/profile': (context) => const Profile(),
+          '/profile': (context) => const ProfileScreen(),
           '/addpasien': (context) => const PasienForm(),
           '/showpasien': (context) => const LurahPage(),
           '/profilescreen': (context) => const ProfileScreen(),
