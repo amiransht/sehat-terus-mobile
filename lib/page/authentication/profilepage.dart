@@ -70,18 +70,18 @@ class _ProfileState extends State<Profile> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Username: ${args!.username}'),
-                Text('Email: ${args!.email}'),
-                Text('Password: ${args!.password}'),
-                Text('Role : ${args!.isLurah ? 'Lurah' : 'Nakes'}'),
-                Text('Nama Depan: ${args!.firstName}'),
-                Text('Nama Belakang: ${args!.lastName}'),
-                Text('Provinsi: ${args!.province}'),
-                Text('Kota: ${args!.city}'),
-                Text('Kecamatan: ${args!.district}'),
-                Text('Jenis Kelamin: ${args!.gender}'),
-                Text('Nomor Telepon: ${args!.phone}'),
+                Text('Email: ${args.email}'),
+                Text('Password: ${args.password}'),
+                Text('Role : ${args.isLurah ? 'Lurah' : 'Nakes'}'),
+                Text('Nama Depan: ${args.firstName}'),
+                Text('Nama Belakang: ${args.lastName}'),
+                Text('Provinsi: ${args.province}'),
+                Text('Kota: ${args.city}'),
+                Text('Kecamatan: ${args.district}'),
+                Text('Jenis Kelamin: ${args.gender}'),
+                Text('Nomor Telepon: ${args.phone}'),
                 // Text('Tanggal Lahir: ${args.birthDate}'),
-                Text('Bio: ${args!.bio}'),
+                Text('Bio: ${args.bio}'),
                 Text('Anda bisa mengatur profil anda pada website kami :'),
                 TextButton(
                   child: const Text('Klik Disini'),
@@ -92,16 +92,12 @@ class _ProfileState extends State<Profile> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainPage(userLoggedIn: widget.user, setPageAtIndex: 0,),
-                      ),
-                    );
-
+                    await request.logout(
+                        "${AppConfig.apiUrl}authentication/logout_flutter/");
+                    Navigator.pushReplacementNamed(context, '/main');
                   },
-                  child: const Text('Kembali ke halaman utama'),
-                ),
+                  child: const Text('Log Out'),
+                )
               ],
             ),
           ),

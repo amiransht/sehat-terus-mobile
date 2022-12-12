@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/core/colors.dart';
 import 'package:sehat_terus/models/user_role.dart';
+import 'package:sehat_terus/page/authentication/coba.dart';
 import 'package:sehat_terus/page/faq%20and%20blog/blog_page.dart';
 import 'package:sehat_terus/page/faq%20and%20blog/faq_page.dart';
 import 'package:sehat_terus/page/homepage/home_page.dart';
@@ -26,7 +27,6 @@ class _MainPageState extends State<MainPage> {
   late int _selectedIndex;
   late User? userLoggedIn;
 
-
   @override
   void initState() {
     _selectedIndex = widget.setPageAtIndex ?? 0;
@@ -35,8 +35,8 @@ class _MainPageState extends State<MainPage> {
     super.initState();
   }
 
-
-  final List<BottomNavigationBarItem> _tabsButton =const <BottomNavigationBarItem>[
+  final List<BottomNavigationBarItem> _tabsButton =
+      const <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
       label: 'Home',
@@ -62,13 +62,14 @@ class _MainPageState extends State<MainPage> {
     print(userLoggedIn?.isLoggedIn);
 
     return SafeArea(
-      child: Scaffold(
+        child: Scaffold(
       body: <Widget>[
-            HomePage(user: userLoggedIn),
-            DataPage(user: userLoggedIn),
-            BlogPage(user: userLoggedIn),
-            Profile(user: userLoggedIn)
-          ].elementAt(_selectedIndex),
+        HomePage(user: userLoggedIn),
+        DataPage(user: userLoggedIn),
+        BlogPage(user: userLoggedIn),
+        // ProfileScreen()
+        ProfileScreen(user: userLoggedIn)
+      ].elementAt(_selectedIndex),
       bottomNavigationBar: Container(
           height: 69.0,
           child: BottomNavigationBar(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/page/about/about.dart';
+import 'package:sehat_terus/page/authentication/coba.dart';
 import 'package:sehat_terus/page/lurah/add_pasien.dart';
 import 'package:sehat_terus/page/faq%20and%20blog/blog_page.dart';
 import 'package:sehat_terus/page/faq%20and%20blog/detail_blog.dart';
@@ -57,6 +58,7 @@ class App extends StatelessWidget {
           '/profile': (context) => const Profile(),
           '/addpasien': (context) => const PasienForm(),
           '/showpasien': (context) => const LurahPage(),
+          '/profilescreen': (context) => const ProfileScreen(),
         },
       ),
     );
