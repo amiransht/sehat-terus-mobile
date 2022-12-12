@@ -71,7 +71,7 @@ class _SignUpAppState extends State<SignUpApp> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      height: 40,
+                      height: 30,
                     ),
                     const Text(
                       "Hi!",
