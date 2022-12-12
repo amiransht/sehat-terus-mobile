@@ -12,6 +12,10 @@ Kelompok F03:
 
 ## Aplikasi
 
+### 🚀 Tautan Aplikasi Mobile Sehat Terus  🚀
+Kunjungi aplikasi mobile kami [di sini](https://install.appcenter.ms/orgs/sehat-terus/apps/sehat-terus-mobile/distribution_groups/public/releases/1)
+
+
 SehatTerus merupakan aplikasi yang dikembangkan untuk membantu warga dalam mengetahui perkembangan penyebaran virus COVID-19. Selain itu, aplikasi ini juga ditujukan untuk memungkinkan para tenaga kesehatan melakukan tracking secara digital terhadap pasien COVID-19 yang masih membutuhkan bantuan.
 
 Dengan mengunjungi laman utama aplikasi SehatTerus, para pengguna aplikasi akan melihat rangkuman dan statistik data yang dimasukkan pada aplikasi tersebut dan data statistik real-time perkembangan COVID-19 di Indonesia. Selain itu, pada halaman tersebut terdapat card yang berisi link menuju berita-berita terkini mengenai COVID-19 di seluruh dunia.
