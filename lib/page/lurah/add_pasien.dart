@@ -3,9 +3,11 @@ import 'dart:convert' as convert;
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:sehat_terus/page/lurah/show_pasien.dart';
+import 'package:sehat_terus/models/user_profile.dart';
 
 class PasienForm extends StatefulWidget {
-  const PasienForm({super.key});
+  final User? user;
+  const PasienForm({super.key, this.user});
 
   @override
   State<PasienForm> createState() => _PasienFormState();
@@ -230,7 +232,15 @@ class _PasienFormState extends State<PasienForm> {
                             .showSnackBar(const SnackBar(
                           content: Text("Patient has been added!"),
                         ));
-                        Navigator.pushReplacementNamed(context, '/showpasien');
+                         Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LurahPage(
+                              user: widget.user,
+                            ),
+                          ),
+                        );
+                        //Navigator.pushReplacementNamed(context, '/showpasien');
                       }
                     }
                   },
