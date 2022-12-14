@@ -5,6 +5,7 @@ import 'package:sehat_terus/appbar.dart';
 import 'package:sehat_terus/models/user_profile.dart';
 import 'dart:convert' as convert;
 import 'package:sehat_terus/core/colors.dart';
+import 'package:sehat_terus/page/lurah/add_pasien.dart';
 
 import 'package:sehat_terus/data_source/api_pasien.dart';
 
@@ -164,6 +165,22 @@ class _LurahPageState extends State<LurahPage> {
               }
             }
           }),
+      floatingActionButton: FloatingActionButton(
+    
+        child: Icon(Icons.add),
+        backgroundColor: BaseColors.green,
+        onPressed: () {
+           Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PasienForm(
+                user: widget.user,
+              ),
+            ),
+          );
+        },
+      ),
+      floatingActionButtonLocation:FloatingActionButtonLocation.startFloat ,
     );
   }
 }
